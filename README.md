@@ -1,13 +1,13 @@
 # savant-core
 
-A Clojure library designed to ... well, that part is up to you.
+TODO
 
 ## Usage
 
-FIXME
+TODO
 
 ## License
 
-Copyright © 2012 FIXME
+Copyright © 2012 Tavis Rudd & Roman Gonzalez
 
-Distributed under the Eclipse Public License, the same as Clojure.
+Distributed under the MIT License.
