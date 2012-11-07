@@ -388,13 +388,6 @@ goog.base = function(a, b, c) {
 goog.scope = function(a) {
   a.call(goog.global)
 };
-goog.debug = {};
-goog.debug.Error = function(a) {
-  this.stack = Error().stack || "";
-  a && (this.message = "" + a)
-};
-goog.inherits(goog.debug.Error, Error);
-goog.debug.Error.prototype.name = "CustomError";
 goog.string = {};
 goog.string.Unicode = {NBSP:"\u00a0"};
 goog.string.startsWith = function(a, b) {
@@ -715,6 +708,13 @@ goog.string.toSelectorCaseCache_ = {};
 goog.string.toSelectorCase = function(a) {
   return goog.string.toSelectorCaseCache_[a] || (goog.string.toSelectorCaseCache_[a] = ("" + a).replace(/([A-Z])/g, "-$1").toLowerCase())
 };
+goog.debug = {};
+goog.debug.Error = function(a) {
+  this.stack = Error().stack || "";
+  a && (this.message = "" + a)
+};
+goog.inherits(goog.debug.Error, Error);
+goog.debug.Error.prototype.name = "CustomError";
 goog.asserts = {};
 goog.asserts.ENABLE_ASSERTS = goog.DEBUG;
 goog.asserts.AssertionError = function(a, b) {
@@ -12816,6 +12816,11 @@ savant.util.hex_digest = function(a) {
     return b
   }().digest())
 };
+savant.util.throw_PLUS_ = function(a, b) {
+  var c = Error(b);
+  c.type = (new cljs.core.Keyword("\ufdd0'type")).call(null, a);
+  throw c;
+};
 savant.util.with_meta_merge = function(a, b) {
   return cljs.core.with_meta.call(null, a, cljs.core.merge.call(null, cljs.core.meta.call(null, a), b))
 };
@@ -12864,7 +12869,7 @@ buster_cljs.core.is = function() {
 savant.test = {};
 savant.test.util_test = {};
 cljs.core.not_EQ_.call(null, "undefined", typeof exports) && (buster = require("buster"));
-var test_map__3076__auto__ = cljs.core.assoc.call(null, cljs.core.ObjMap.EMPTY, "digest of number 1 has always the same value", function() {
+var test_map__3724__auto__ = cljs.core.assoc.call(null, cljs.core.ObjMap.EMPTY, "digest of number 1 has always the same value", function() {
   return buster_cljs.core.is.call(null, cljs.core._EQ_.call(null, "356a192b7913b04c54574d18c28d46e6395428ab", savant.util.hex_digest.call(null, 1)), "hex-digest should return always same value for number 1")
 });
-buster.testCase("test-hex-digest", buster_cljs.core.cljs__GT_js.call(null, test_map__3076__auto__));
+buster.testCase("test-hex-digest", buster_cljs.core.cljs__GT_js.call(null, test_map__3724__auto__));

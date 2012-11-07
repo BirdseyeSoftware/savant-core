@@ -1,6 +1,6 @@
 ;; This file was generated with dalap-cljsbuild from
 ;;
-;; test/clj/savant/test/util_test.clj @ Wed Nov 07 19:04:52 UTC 2012
+;; test/clj/savant/test/util_test.clj @ Wed Nov 07 20:59:19 UTC 2012
 ;;
 (ns savant.test.util-test (:require [buster-cljs.core :refer [is]] [savant.util :as u]) (:require-macros [buster-cljs.macros :refer [initialize-buster deftest testing]]))
 (do (initialize-buster))
