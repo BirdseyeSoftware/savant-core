@@ -30,13 +30,13 @@
     (-create-stream this bucket-name id))
 
   (get-stream [this bucket-name id]
-    (-get-stream this bucket-name id false))
+    (-get-stream this bucket-name id {}))
 
   (get-stream [this bucket-name id opts]
     (-get-stream this bucket-name id opts))
 
   (exists? [this bucket-name id]
-    (not (nil? (-get-stream this bucket-name id false)))))
+    (not (nil? (-get-stream this bucket-name id {})))))
 
 (defrecord MemoryEventStream [state-atom current-rev]
   IEventStream
