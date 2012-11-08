@@ -12695,6 +12695,596 @@ cljs.core.UUID.prototype.toString = function() {
   return cljs.core.pr_str.call(null, this)
 };
 cljs.core.UUID;
+var savant = {core:{}};
+savant.core.IEventStream = {};
+savant.core.get_rev_id = function(a) {
+  if(a ? a.savant$core$IEventStream$get_rev_id$arity$1 : a) {
+    return a.savant$core$IEventStream$get_rev_id$arity$1(a)
+  }
+  var b;
+  b = savant.core.get_rev_id[goog.typeOf(null == a ? null : a)];
+  if(!b && (b = savant.core.get_rev_id._, !b)) {
+    throw cljs.core.missing_protocol.call(null, "IEventStream.get-rev-id", a);
+  }
+  return b.call(null, a)
+};
+savant.core.tip_QMARK_ = function(a) {
+  if(a ? a.savant$core$IEventStream$tip_QMARK_$arity$1 : a) {
+    return a.savant$core$IEventStream$tip_QMARK_$arity$1(a)
+  }
+  var b;
+  b = savant.core.tip_QMARK_[goog.typeOf(null == a ? null : a)];
+  if(!b && (b = savant.core.tip_QMARK_._, !b)) {
+    throw cljs.core.missing_protocol.call(null, "IEventStream.tip?", a);
+  }
+  return b.call(null, a)
+};
+savant.core.get_tip = function(a) {
+  if(a ? a.savant$core$IEventStream$get_tip$arity$1 : a) {
+    return a.savant$core$IEventStream$get_tip$arity$1(a)
+  }
+  var b;
+  b = savant.core.get_tip[goog.typeOf(null == a ? null : a)];
+  if(!b && (b = savant.core.get_tip._, !b)) {
+    throw cljs.core.missing_protocol.call(null, "IEventStream.get-tip", a);
+  }
+  return b.call(null, a)
+};
+savant.core.commit_events_BANG_ = function(a, b) {
+  if(a ? a.savant$core$IEventStream$commit_events_BANG_$arity$2 : a) {
+    return a.savant$core$IEventStream$commit_events_BANG_$arity$2(a, b)
+  }
+  var c;
+  c = savant.core.commit_events_BANG_[goog.typeOf(null == a ? null : a)];
+  if(!c && (c = savant.core.commit_events_BANG_._, !c)) {
+    throw cljs.core.missing_protocol.call(null, "IEventStream.commit-events!", a);
+  }
+  return c.call(null, a, b)
+};
+savant.core.get_commits_seq = function(a) {
+  if(a ? a.savant$core$IEventStream$get_commits_seq$arity$1 : a) {
+    return a.savant$core$IEventStream$get_commits_seq$arity$1(a)
+  }
+  var b;
+  b = savant.core.get_commits_seq[goog.typeOf(null == a ? null : a)];
+  if(!b && (b = savant.core.get_commits_seq._, !b)) {
+    throw cljs.core.missing_protocol.call(null, "IEventStream.get-commits-seq", a);
+  }
+  return b.call(null, a)
+};
+savant.core.get_events_seq = function() {
+  var a = null, b = function(a) {
+    if(a ? a.savant$core$IEventStream$get_events_seq$arity$1 : a) {
+      return a.savant$core$IEventStream$get_events_seq$arity$1(a)
+    }
+    var b;
+    b = savant.core.get_events_seq[goog.typeOf(null == a ? null : a)];
+    if(!b && (b = savant.core.get_events_seq._, !b)) {
+      throw cljs.core.missing_protocol.call(null, "IEventStream.get-events-seq", a);
+    }
+    return b.call(null, a)
+  }, c = function(a, b) {
+    if(a ? a.savant$core$IEventStream$get_events_seq$arity$2 : a) {
+      return a.savant$core$IEventStream$get_events_seq$arity$2(a, b)
+    }
+    var c;
+    c = savant.core.get_events_seq[goog.typeOf(null == a ? null : a)];
+    if(!c && (c = savant.core.get_events_seq._, !c)) {
+      throw cljs.core.missing_protocol.call(null, "IEventStream.get-events-seq", a);
+    }
+    return c.call(null, a, b)
+  }, d = function(a, b, c) {
+    if(a ? a.savant$core$IEventStream$get_events_seq$arity$3 : a) {
+      return a.savant$core$IEventStream$get_events_seq$arity$3(a, b, c)
+    }
+    var d;
+    d = savant.core.get_events_seq[goog.typeOf(null == a ? null : a)];
+    if(!d && (d = savant.core.get_events_seq._, !d)) {
+      throw cljs.core.missing_protocol.call(null, "IEventStream.get-events-seq", a);
+    }
+    return d.call(null, a, b, c)
+  }, a = function(a, f, g) {
+    switch(arguments.length) {
+      case 1:
+        return b.call(this, a);
+      case 2:
+        return c.call(this, a, f);
+      case 3:
+        return d.call(this, a, f, g)
+    }
+    throw Error("Invalid arity: " + arguments.length);
+  };
+  a.cljs$lang$arity$1 = b;
+  a.cljs$lang$arity$2 = c;
+  a.cljs$lang$arity$3 = d;
+  return a
+}();
+savant.core.get_events_vec = function() {
+  var a = null, b = function(a) {
+    if(a ? a.savant$core$IEventStream$get_events_vec$arity$1 : a) {
+      return a.savant$core$IEventStream$get_events_vec$arity$1(a)
+    }
+    var b;
+    b = savant.core.get_events_vec[goog.typeOf(null == a ? null : a)];
+    if(!b && (b = savant.core.get_events_vec._, !b)) {
+      throw cljs.core.missing_protocol.call(null, "IEventStream.get-events-vec", a);
+    }
+    return b.call(null, a)
+  }, c = function(a, b) {
+    if(a ? a.savant$core$IEventStream$get_events_vec$arity$2 : a) {
+      return a.savant$core$IEventStream$get_events_vec$arity$2(a, b)
+    }
+    var c;
+    c = savant.core.get_events_vec[goog.typeOf(null == a ? null : a)];
+    if(!c && (c = savant.core.get_events_vec._, !c)) {
+      throw cljs.core.missing_protocol.call(null, "IEventStream.get-events-vec", a);
+    }
+    return c.call(null, a, b)
+  }, d = function(a, b, c) {
+    if(a ? a.savant$core$IEventStream$get_events_vec$arity$3 : a) {
+      return a.savant$core$IEventStream$get_events_vec$arity$3(a, b, c)
+    }
+    var d;
+    d = savant.core.get_events_vec[goog.typeOf(null == a ? null : a)];
+    if(!d && (d = savant.core.get_events_vec._, !d)) {
+      throw cljs.core.missing_protocol.call(null, "IEventStream.get-events-vec", a);
+    }
+    return d.call(null, a, b, c)
+  }, a = function(a, f, g) {
+    switch(arguments.length) {
+      case 1:
+        return b.call(this, a);
+      case 2:
+        return c.call(this, a, f);
+      case 3:
+        return d.call(this, a, f, g)
+    }
+    throw Error("Invalid arity: " + arguments.length);
+  };
+  a.cljs$lang$arity$1 = b;
+  a.cljs$lang$arity$2 = c;
+  a.cljs$lang$arity$3 = d;
+  return a
+}();
+savant.core.IEventStore = {};
+savant.core._same_store_QMARK_ = function(a, b) {
+  if(a ? a.savant$core$IEventStore$_same_store_QMARK_$arity$2 : a) {
+    return a.savant$core$IEventStore$_same_store_QMARK_$arity$2(a, b)
+  }
+  var c;
+  c = savant.core._same_store_QMARK_[goog.typeOf(null == a ? null : a)];
+  if(!c && (c = savant.core._same_store_QMARK_._, !c)) {
+    throw cljs.core.missing_protocol.call(null, "IEventStore.-same-store?", a);
+  }
+  return c.call(null, a, b)
+};
+savant.core.exists_QMARK_ = function(a, b, c) {
+  if(a ? a.savant$core$IEventStore$exists_QMARK_$arity$3 : a) {
+    return a.savant$core$IEventStore$exists_QMARK_$arity$3(a, b, c)
+  }
+  var d;
+  d = savant.core.exists_QMARK_[goog.typeOf(null == a ? null : a)];
+  if(!d && (d = savant.core.exists_QMARK_._, !d)) {
+    throw cljs.core.missing_protocol.call(null, "IEventStore.exists?", a);
+  }
+  return d.call(null, a, b, c)
+};
+savant.core.create_stream = function(a, b, c) {
+  if(a ? a.savant$core$IEventStore$create_stream$arity$3 : a) {
+    return a.savant$core$IEventStore$create_stream$arity$3(a, b, c)
+  }
+  var d;
+  d = savant.core.create_stream[goog.typeOf(null == a ? null : a)];
+  if(!d && (d = savant.core.create_stream._, !d)) {
+    throw cljs.core.missing_protocol.call(null, "IEventStore.create-stream", a);
+  }
+  return d.call(null, a, b, c)
+};
+savant.core.get_stream = function() {
+  var a = null, b = function(a, b, c) {
+    if(a ? a.savant$core$IEventStore$get_stream$arity$3 : a) {
+      return a.savant$core$IEventStore$get_stream$arity$3(a, b, c)
+    }
+    var g;
+    g = savant.core.get_stream[goog.typeOf(null == a ? null : a)];
+    if(!g && (g = savant.core.get_stream._, !g)) {
+      throw cljs.core.missing_protocol.call(null, "IEventStore.get-stream", a);
+    }
+    return g.call(null, a, b, c)
+  }, c = function(a, b, c, g) {
+    if(a ? a.savant$core$IEventStore$get_stream$arity$4 : a) {
+      return a.savant$core$IEventStore$get_stream$arity$4(a, b, c, g)
+    }
+    var h;
+    h = savant.core.get_stream[goog.typeOf(null == a ? null : a)];
+    if(!h && (h = savant.core.get_stream._, !h)) {
+      throw cljs.core.missing_protocol.call(null, "IEventStore.get-stream", a);
+    }
+    return h.call(null, a, b, c, g)
+  }, a = function(a, e, f, g) {
+    switch(arguments.length) {
+      case 3:
+        return b.call(this, a, e, f);
+      case 4:
+        return c.call(this, a, e, f, g)
+    }
+    throw Error("Invalid arity: " + arguments.length);
+  };
+  a.cljs$lang$arity$3 = b;
+  a.cljs$lang$arity$4 = c;
+  return a
+}();
+var clojure = {set:{}};
+clojure.set.bubble_max_key = function(a, b) {
+  var c = cljs.core.apply.call(null, cljs.core.max_key, a, b);
+  return cljs.core.cons.call(null, c, cljs.core.remove.call(null, function(a) {
+    return c === a
+  }, b))
+};
+clojure.set.union = function() {
+  var a = null, b = function() {
+    return cljs.core.PersistentHashSet.EMPTY
+  }, c = function(a, b) {
+    return cljs.core.count.call(null, a) < cljs.core.count.call(null, b) ? cljs.core.reduce.call(null, cljs.core.conj, b, a) : cljs.core.reduce.call(null, cljs.core.conj, a, b)
+  }, d = function() {
+    var a = function(a, b, c) {
+      a = clojure.set.bubble_max_key.call(null, cljs.core.count, cljs.core.conj.call(null, c, b, a));
+      return cljs.core.reduce.call(null, cljs.core.into, cljs.core.first.call(null, a), cljs.core.rest.call(null, a))
+    }, b = function(b, c, d) {
+      var f = null;
+      goog.isDef(d) && (f = cljs.core.array_seq(Array.prototype.slice.call(arguments, 2), 0));
+      return a.call(this, b, c, f)
+    };
+    b.cljs$lang$maxFixedArity = 2;
+    b.cljs$lang$applyTo = function(b) {
+      var c = cljs.core.first(b), d = cljs.core.first(cljs.core.next(b)), b = cljs.core.rest(cljs.core.next(b));
+      return a(c, d, b)
+    };
+    b.cljs$lang$arity$variadic = a;
+    return b
+  }(), a = function(a, f, g) {
+    switch(arguments.length) {
+      case 0:
+        return b.call(this);
+      case 1:
+        return a;
+      case 2:
+        return c.call(this, a, f);
+      default:
+        return d.cljs$lang$arity$variadic(a, f, cljs.core.array_seq(arguments, 2))
+    }
+    throw Error("Invalid arity: " + arguments.length);
+  };
+  a.cljs$lang$maxFixedArity = 2;
+  a.cljs$lang$applyTo = d.cljs$lang$applyTo;
+  a.cljs$lang$arity$0 = b;
+  a.cljs$lang$arity$1 = function(a) {
+    return a
+  };
+  a.cljs$lang$arity$2 = c;
+  a.cljs$lang$arity$variadic = d.cljs$lang$arity$variadic;
+  return a
+}();
+clojure.set.intersection = function() {
+  var a = null, b = function(a, b) {
+    for(;;) {
+      if(cljs.core.count.call(null, b) < cljs.core.count.call(null, a)) {
+        var c = a, a = b, b = c
+      }else {
+        return cljs.core.reduce.call(null, function(a, b) {
+          return function(a, c) {
+            return cljs.core.contains_QMARK_.call(null, b, c) ? a : cljs.core.disj.call(null, a, c)
+          }
+        }(a, b), a, a)
+      }
+    }
+  }, c = function() {
+    var b = function(b, c, d) {
+      b = clojure.set.bubble_max_key.call(null, function(a) {
+        return-cljs.core.count.call(null, a)
+      }, cljs.core.conj.call(null, d, c, b));
+      return cljs.core.reduce.call(null, a, cljs.core.first.call(null, b), cljs.core.rest.call(null, b))
+    }, c = function(a, c, e) {
+      var i = null;
+      goog.isDef(e) && (i = cljs.core.array_seq(Array.prototype.slice.call(arguments, 2), 0));
+      return b.call(this, a, c, i)
+    };
+    c.cljs$lang$maxFixedArity = 2;
+    c.cljs$lang$applyTo = function(a) {
+      var c = cljs.core.first(a), e = cljs.core.first(cljs.core.next(a)), a = cljs.core.rest(cljs.core.next(a));
+      return b(c, e, a)
+    };
+    c.cljs$lang$arity$variadic = b;
+    return c
+  }(), a = function(a, e, f) {
+    switch(arguments.length) {
+      case 1:
+        return a;
+      case 2:
+        return b.call(this, a, e);
+      default:
+        return c.cljs$lang$arity$variadic(a, e, cljs.core.array_seq(arguments, 2))
+    }
+    throw Error("Invalid arity: " + arguments.length);
+  };
+  a.cljs$lang$maxFixedArity = 2;
+  a.cljs$lang$applyTo = c.cljs$lang$applyTo;
+  a.cljs$lang$arity$1 = function(a) {
+    return a
+  };
+  a.cljs$lang$arity$2 = b;
+  a.cljs$lang$arity$variadic = c.cljs$lang$arity$variadic;
+  return a
+}();
+clojure.set.difference = function() {
+  var a = null, b = function(a, b) {
+    return cljs.core.count.call(null, a) < cljs.core.count.call(null, b) ? cljs.core.reduce.call(null, function(a, c) {
+      return cljs.core.contains_QMARK_.call(null, b, c) ? cljs.core.disj.call(null, a, c) : a
+    }, a, a) : cljs.core.reduce.call(null, cljs.core.disj, a, b)
+  }, c = function() {
+    var b = function(b, c, d) {
+      return cljs.core.reduce.call(null, a, b, cljs.core.conj.call(null, d, c))
+    }, c = function(a, c, e) {
+      var i = null;
+      goog.isDef(e) && (i = cljs.core.array_seq(Array.prototype.slice.call(arguments, 2), 0));
+      return b.call(this, a, c, i)
+    };
+    c.cljs$lang$maxFixedArity = 2;
+    c.cljs$lang$applyTo = function(a) {
+      var c = cljs.core.first(a), e = cljs.core.first(cljs.core.next(a)), a = cljs.core.rest(cljs.core.next(a));
+      return b(c, e, a)
+    };
+    c.cljs$lang$arity$variadic = b;
+    return c
+  }(), a = function(a, e, f) {
+    switch(arguments.length) {
+      case 1:
+        return a;
+      case 2:
+        return b.call(this, a, e);
+      default:
+        return c.cljs$lang$arity$variadic(a, e, cljs.core.array_seq(arguments, 2))
+    }
+    throw Error("Invalid arity: " + arguments.length);
+  };
+  a.cljs$lang$maxFixedArity = 2;
+  a.cljs$lang$applyTo = c.cljs$lang$applyTo;
+  a.cljs$lang$arity$1 = function(a) {
+    return a
+  };
+  a.cljs$lang$arity$2 = b;
+  a.cljs$lang$arity$variadic = c.cljs$lang$arity$variadic;
+  return a
+}();
+clojure.set.select = function(a, b) {
+  return cljs.core.reduce.call(null, function(b, d) {
+    return cljs.core.truth_(a.call(null, d)) ? b : cljs.core.disj.call(null, b, d)
+  }, b, b)
+};
+clojure.set.project = function(a, b) {
+  return cljs.core.set.call(null, cljs.core.map.call(null, function(a) {
+    return cljs.core.select_keys.call(null, a, b)
+  }, a))
+};
+clojure.set.rename_keys = function(a, b) {
+  return cljs.core.reduce.call(null, function(a, b) {
+    var e = cljs.core.nth.call(null, b, 0, null), f = cljs.core.nth.call(null, b, 1, null), g;
+    g = (g = cljs.core.not_EQ_.call(null, e, f)) ? cljs.core.contains_QMARK_.call(null, a, e) : g;
+    return g ? cljs.core.dissoc.call(null, cljs.core.assoc.call(null, a, f, cljs.core._lookup.call(null, a, e, null)), e) : a
+  }, a, b)
+};
+clojure.set.rename = function(a, b) {
+  return cljs.core.set.call(null, cljs.core.map.call(null, function(a) {
+    return clojure.set.rename_keys.call(null, a, b)
+  }, a))
+};
+clojure.set.index = function(a, b) {
+  return cljs.core.reduce.call(null, function(a, d) {
+    var e = cljs.core.select_keys.call(null, d, b);
+    return cljs.core.assoc.call(null, a, e, cljs.core.conj.call(null, cljs.core._lookup.call(null, a, e, cljs.core.PersistentHashSet.EMPTY), d))
+  }, cljs.core.ObjMap.EMPTY, a)
+};
+clojure.set.map_invert = function(a) {
+  return cljs.core.reduce.call(null, function(a, c) {
+    var d = cljs.core.nth.call(null, c, 0, null), e = cljs.core.nth.call(null, c, 1, null);
+    return cljs.core.assoc.call(null, a, e, d)
+  }, cljs.core.ObjMap.EMPTY, a)
+};
+clojure.set.join = function() {
+  var a = null, b = function(a, b) {
+    if(function() {
+      var c = cljs.core.seq.call(null, a);
+      return c ? cljs.core.seq.call(null, b) : c
+    }()) {
+      var c = clojure.set.intersection.call(null, cljs.core.set.call(null, cljs.core.keys.call(null, cljs.core.first.call(null, a))), cljs.core.set.call(null, cljs.core.keys.call(null, cljs.core.first.call(null, b)))), g = cljs.core.count.call(null, a) <= cljs.core.count.call(null, b) ? cljs.core.PersistentVector.fromArray([a, b], !0) : cljs.core.PersistentVector.fromArray([b, a], !0), h = cljs.core.nth.call(null, g, 0, null), g = cljs.core.nth.call(null, g, 1, null), i = clojure.set.index.call(null, 
+      h, c);
+      return cljs.core.reduce.call(null, function(a, b) {
+        var d = i.call(null, cljs.core.select_keys.call(null, b, c));
+        return cljs.core.truth_(d) ? cljs.core.reduce.call(null, function(a, c) {
+          return cljs.core.conj.call(null, a, cljs.core.merge.call(null, c, b))
+        }, a, d) : a
+      }, cljs.core.PersistentHashSet.EMPTY, g)
+    }
+    return cljs.core.PersistentHashSet.EMPTY
+  }, c = function(a, b, c) {
+    var a = cljs.core.count.call(null, a) <= cljs.core.count.call(null, b) ? cljs.core.PersistentVector.fromArray([a, b, clojure.set.map_invert.call(null, c)], !0) : cljs.core.PersistentVector.fromArray([b, a, c], !0), b = cljs.core.nth.call(null, a, 0, null), c = cljs.core.nth.call(null, a, 1, null), g = cljs.core.nth.call(null, a, 2, null), h = clojure.set.index.call(null, b, cljs.core.vals.call(null, g));
+    return cljs.core.reduce.call(null, function(a, b) {
+      var c = h.call(null, clojure.set.rename_keys.call(null, cljs.core.select_keys.call(null, b, cljs.core.keys.call(null, g)), g));
+      return cljs.core.truth_(c) ? cljs.core.reduce.call(null, function(a, c) {
+        return cljs.core.conj.call(null, a, cljs.core.merge.call(null, c, b))
+      }, a, c) : a
+    }, cljs.core.PersistentHashSet.EMPTY, c)
+  }, a = function(a, e, f) {
+    switch(arguments.length) {
+      case 2:
+        return b.call(this, a, e);
+      case 3:
+        return c.call(this, a, e, f)
+    }
+    throw Error("Invalid arity: " + arguments.length);
+  };
+  a.cljs$lang$arity$2 = b;
+  a.cljs$lang$arity$3 = c;
+  return a
+}();
+clojure.set.subset_QMARK_ = function(a, b) {
+  var c = cljs.core.count.call(null, a) <= cljs.core.count.call(null, b);
+  return c ? cljs.core.every_QMARK_.call(null, function(a) {
+    return cljs.core.contains_QMARK_.call(null, b, a)
+  }, a) : c
+};
+clojure.set.superset_QMARK_ = function(a, b) {
+  var c = cljs.core.count.call(null, a) >= cljs.core.count.call(null, b);
+  return c ? cljs.core.every_QMARK_.call(null, function(b) {
+    return cljs.core.contains_QMARK_.call(null, a, b)
+  }, b) : c
+};
+var buster_cljs = {core:{}};
+buster_cljs.core.cljs__GT_js = function cljs__GT_js(b) {
+  if(cljs.core.string_QMARK_.call(null, b)) {
+    return b
+  }
+  if(cljs.core.keyword_QMARK_.call(null, b)) {
+    return cljs.core.name.call(null, b)
+  }
+  if(cljs.core.map_QMARK_.call(null, b)) {
+    for(var c = {}, b = cljs.core.seq.call(null, b);;) {
+      if(b) {
+        var d = cljs.core.first.call(null, b), e = cljs.core.nth.call(null, d, 0, null), d = cljs.core.nth.call(null, d, 1, null);
+        c[cljs__GT_js.call(null, e)] = cljs__GT_js.call(null, d);
+        b = cljs.core.next.call(null, b)
+      }else {
+        break
+      }
+    }
+    return c
+  }
+  return cljs.core.coll_QMARK_.call(null, b) ? cljs.core.apply.call(null, cljs.core.array, cljs.core.map.call(null, cljs__GT_js, b)) : b
+};
+buster_cljs.core.is = function() {
+  var a = function(a, b) {
+    return buster.assert(a, b)
+  }, b = function(b, d) {
+    var e = null;
+    goog.isDef(d) && (e = cljs.core.array_seq(Array.prototype.slice.call(arguments, 1), 0));
+    return a.call(this, b, e)
+  };
+  b.cljs$lang$maxFixedArity = 1;
+  b.cljs$lang$applyTo = function(b) {
+    var d = cljs.core.first(b), b = cljs.core.rest(b);
+    return a(d, b)
+  };
+  b.cljs$lang$arity$variadic = a;
+  return b
+}();
+savant.test = {};
+savant.test.store_spec = {};
+savant.test.store_spec.get_event_store_fn = function(a) {
+  return cljs.core.atom.call(null, a.get_event_store)
+};
+savant.test.store_spec.submap_QMARK_ = function(a, b) {
+  return clojure.set.subset_QMARK_.call(null, cljs.core.set.call(null, cljs.core.seq.call(null, a)), cljs.core.set.call(null, cljs.core.seq.call(null, b)))
+};
+savant.test.store_spec.default_test_bucket_name = "event-store-tests";
+savant.test.store_spec.get_event_store_constructor_tests = function(a, b) {
+  return buster.spec.it("event store constructor idempotent when called with same options", function() {
+    var c = savant.test.store_spec.get_event_store_fn.call(null, a), d = cljs.core.deref.call(null, c), c = d.call(null, b), d = d.call(null, b);
+    buster_cljs.core.is.call(null, savant.core._same_store_QMARK_.call(null, c, d), "get-event-store should be idempotent");
+    return null
+  })
+};
+savant.test.store_spec.event_store_protocol_tests = function(a, b) {
+  var c = savant.test.store_spec.get_event_store_fn.call(null, a), d = cljs.core.deref.call(null, c).call(null, b), e = function() {
+    var a = (new cljs.core.Keyword("\ufdd0'test-bucket")).call(null, b);
+    return cljs.core.truth_(a) ? a : savant.test.store_spec.default_test_bucket_name
+  }();
+  buster.spec.it("opts must contain a string :test-bucket to run tests", function() {
+    buster_cljs.core.is.call(null, cljs.core.string_QMARK_.call(null, e), "The test opts must contain a string :test-bucket");
+    return null
+  });
+  buster.spec.it("create-stream requires bucket-name/id as str, keyword or symbol", function() {
+    buster_cljs.core.is.call(null, function() {
+      var a = savant.core.create_stream.call(null, d, e, "bar");
+      return a ? cljs.core.truth_(cljs.core.truth_(null) ? null : a.savant$core$IEventStream$) ? !0 : a.cljs$lang$protocol_mask$partition$ ? !1 : cljs.core.type_satisfies_.call(null, savant.core.IEventStream, a) : cljs.core.type_satisfies_.call(null, savant.core.IEventStream, a)
+    }(), "create-stream doesn't create a IEventStream object");
+    return null
+  });
+  buster.spec.it("create-stream throws a stone when called twice with same args", function() {
+    try {
+      savant.core.create_stream.call(null, d, e, "world"), savant.core.create_stream.call(null, d, e, "world"), buster_cljs.core.is.call(null, !1)
+    }catch(a) {
+      if(cljs.core.instance_QMARK_.call(null, Error, a)) {
+        if(cljs.core._EQ_.call(null, a.type, "\ufdd0'event-store/stream-exists")) {
+          buster_cljs.core.is.call(null, !0, "create-stream twice should raise an `stream-exists` error")
+        }else {
+          throw a;
+        }
+      }else {
+        throw a;
+      }
+    }
+    return null
+  });
+  return buster.spec.it("get-stream returns nil when stream doesn't exist", function() {
+    buster_cljs.core.is.call(null, null == savant.core.get_stream.call(null, d, e, "non-existing"));
+    return null
+  })
+};
+savant.test.store_spec.event_stream_protocol_tests = function(a, b) {
+  var c = savant.test.store_spec.get_event_store_fn.call(null, a), d = cljs.core.deref.call(null, c).call(null, b), e = function() {
+    var a = (new cljs.core.Keyword("\ufdd0'test-bucket")).call(null, b);
+    return cljs.core.truth_(a) ? a : savant.test.store_spec.default_test_bucket_name
+  }();
+  buster.spec.it("opts must contain a string :test-bucket to run tests", function() {
+    buster_cljs.core.is.call(null, cljs.core.string_QMARK_.call(null, e), "The test opts must contain a string :test-bucket");
+    return null
+  });
+  return buster.spec.describe("on a new event-stream", function() {
+    var a = savant.core.create_stream.call(null, d, e, "new-stream-test");
+    buster.spec.it("get-commits-seq returns nil on a new event-stream", function() {
+      buster_cljs.core.is.call(null, null == savant.core.get_commits_seq.call(null, a), "get-commits-req should return nil on a new event-stream");
+      return null
+    });
+    buster.spec.it("get-events-vec returns empty on a new event-stream", function() {
+      buster_cljs.core.is.call(null, cljs.core.empty_QMARK_.call(null, savant.core.get_events_vec.call(null, a)), "get-events-vec should return an empty vector on a new event-stream");
+      buster_cljs.core.is.call(null, cljs.core.empty_QMARK_.call(null, savant.core.get_events_vec.call(null, a, 0)), "get-events-vec should return an empty vector on a new event-stream");
+      buster_cljs.core.is.call(null, cljs.core.empty_QMARK_.call(null, savant.core.get_events_vec.call(null, a, 0, 0)), "get-events-vec should return an empty vector on a new event-stream");
+      return null
+    });
+    buster.spec.it("get-events-vec -> IndexOutOfBoundsExc. if invalid subrange", function() {
+      try {
+        savant.core.get_events_vec.call(null, a, 0, 5), buster_cljs.core.is.call(null, !1, "Index out of bound error should be thrown")
+      }catch(b) {
+        if(cljs.core.instance_QMARK_.call(null, Error, b)) {
+          buster_cljs.core.is.call(null, !0)
+        }else {
+          throw b;
+        }
+      }
+      return null
+    });
+    buster.spec.it("get-events-seq returns nil on a new event-stream", function() {
+      buster_cljs.core.is.call(null, null == savant.core.get_events_seq.call(null, a), "get-events-seq should return nil on a new event-stream");
+      return null
+    });
+    buster.spec.it("commit-events! creates an initial rev-hash", function() {
+      var a = savant.core.create_stream.call(null, d, e, "init-rev-hash-test"), a = savant.core.commit_events_BANG_.call(null, a, cljs.core.PersistentVector.fromArray([1, 2, 3], !0)), a = cljs.core.meta.call(null, cljs.core.last.call(null, savant.core.get_commits_seq.call(null, a)));
+      buster_cljs.core.is.call(null, null != (new cljs.core.Keyword("\ufdd0'event-store/rev-hash")).call(null, a), "create-events! should create an initial rev-hash");
+      buster_cljs.core.is.call(null, null == (new cljs.core.Keyword("\ufdd0'event-store/parent-rev-hash")).call(null, a), "create-events! should have nil parent-rev-hash on first events");
+      return null
+    });
+    buster.spec.it("commit-events! stores new events to the empty stream", function() {
+      var b = savant.core.commit_events_BANG_.call(null, a, cljs.core.PersistentVector.fromArray([1, 2, 3], !0)), c = savant.core.commit_events_BANG_.call(null, b, cljs.core.with_meta.call(null, cljs.core.PersistentVector.fromArray([4, 5, 6], !0), cljs.core.ObjMap.fromObject(["\ufdd0'index"], {"\ufdd0'index":1}))), d = savant.core.commit_events_BANG_.call(null, c, cljs.core.PersistentVector.fromArray([7, 8, 9], !0));
+      buster_cljs.core.is.call(null, cljs.core._EQ_.call(null, cljs.core.seq.call(null, cljs.core.PersistentVector.fromArray([1, 2, 3], !0)), savant.core.get_events_seq.call(null, b)), "invalid event-seq");
+      buster_cljs.core.is.call(null, cljs.core._EQ_.call(null, cljs.core.PersistentVector.fromArray([1, 2, 3], !0), savant.core.get_events_vec.call(null, b)), "invalid event-seq");
+      buster_cljs.core.is.call(null, cljs.core._EQ_.call(null, cljs.core.seq.call(null, cljs.core.PersistentVector.fromArray([1, 2, 3, 4, 5, 6], !0)), savant.core.get_events_seq.call(null, c)), "invalid event-seq");
+      buster_cljs.core.is.call(null, cljs.core._EQ_.call(null, cljs.core.seq.call(null, cljs.core.PersistentVector.fromArray([1, 2, 3, 4, 5, 6, 7, 8, 9], !0)), savant.core.get_events_seq.call(null, d)), "invalid event-seq");
+      buster_cljs.core.is.call(null, savant.test.store_spec.submap_QMARK_.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'index"], {"\ufdd0'index":1}), cljs.core.meta.call(null, cljs.core.second.call(null, savant.core.get_commits_seq.call(null, d)))), "invalid event-seq");
+      return null
+    });
+    return null
+  })
+};
 goog.crypt = {};
 goog.crypt.stringToByteArray = function(a) {
   for(var b = [], c = 0, d = 0;d < a.length;d++) {
@@ -12808,7 +13398,7 @@ goog.crypt.Sha1.prototype.digest = function() {
   }
   return a
 };
-var savant = {util:{}};
+savant.util = {};
 savant.util.hex_digest = function(a) {
   return goog.crypt.byteArrayToHex(function() {
     var b = new goog.crypt.Sha1;
@@ -12828,48 +13418,273 @@ savant.util.named_QMARK_ = function(a) {
   var b = cljs.core.string_QMARK_.call(null, a);
   return b ? b : cljs.core.instance_QMARK_.call(null, cljs.core.Named, a)
 };
-var buster_cljs = {core:{}};
-buster_cljs.core.cljs__GT_js = function cljs__GT_js(b) {
-  if(cljs.core.string_QMARK_.call(null, b)) {
-    return b
-  }
-  if(cljs.core.keyword_QMARK_.call(null, b)) {
-    return cljs.core.name.call(null, b)
-  }
-  if(cljs.core.map_QMARK_.call(null, b)) {
-    for(var c = {}, b = cljs.core.seq.call(null, b);;) {
-      if(b) {
-        var d = cljs.core.first.call(null, b), e = cljs.core.nth.call(null, d, 0, null), d = cljs.core.nth.call(null, d, 1, null);
-        c[cljs__GT_js.call(null, e)] = cljs__GT_js.call(null, d);
-        b = cljs.core.next.call(null, b)
-      }else {
-        break
-      }
-    }
-    return c
-  }
-  return cljs.core.coll_QMARK_.call(null, b) ? cljs.core.apply.call(null, cljs.core.array, cljs.core.map.call(null, cljs__GT_js, b)) : b
+savant.util.ns_publics = function() {
+  return null
 };
-buster_cljs.core.is = function() {
-  var a = function(a, b) {
-    return buster.assert(a, b)
-  }, b = function(b, d) {
-    var e = null;
-    goog.isDef(d) && (e = cljs.core.array_seq(Array.prototype.slice.call(arguments, 1), 0));
-    return a.call(this, b, e)
-  };
-  b.cljs$lang$maxFixedArity = 1;
-  b.cljs$lang$applyTo = function(b) {
-    var d = cljs.core.first(b), b = cljs.core.rest(b);
-    return a(d, b)
-  };
-  b.cljs$lang$arity$variadic = a;
-  return b
-}();
-savant.test = {};
+savant.store = {};
+savant.store.memory = {};
+savant.store.memory.memory_stores = cljs.core.atom.call(null, cljs.core.ObjMap.EMPTY);
+savant.store.memory.MemoryEventStore = function(a, b, c) {
+  this.state_atom = a;
+  this.__meta = b;
+  this.__extmap = c;
+  this.cljs$lang$protocol_mask$partition1$ = 0;
+  this.cljs$lang$protocol_mask$partition0$ = 2229667594;
+  1 < arguments.length ? (this.__meta = b, this.__extmap = c) : this.__extmap = this.__meta = null
+};
+savant.store.memory.MemoryEventStore.prototype.cljs$core$IHash$_hash$arity$1 = function(a) {
+  var b = this.__hash;
+  return null != b ? b : this.__hash = a = cljs.core.hash_imap.call(null, a)
+};
+savant.store.memory.MemoryEventStore.prototype.cljs$core$ILookup$_lookup$arity$2 = function(a, b) {
+  return a.cljs$core$ILookup$_lookup$arity$3(a, b, null)
+};
+savant.store.memory.MemoryEventStore.prototype.cljs$core$ILookup$_lookup$arity$3 = function(a, b, c) {
+  return"\ufdd0'state-atom" === b ? this.state_atom : cljs.core._lookup.call(null, this.__extmap, b, c)
+};
+savant.store.memory.MemoryEventStore.prototype.cljs$core$IAssociative$_assoc$arity$3 = function(a, b, c) {
+  return cljs.core.identical_QMARK_.call(null, "\ufdd0'state-atom", b) ? new savant.store.memory.MemoryEventStore(c, this.__meta, this.__extmap, null) : new savant.store.memory.MemoryEventStore(this.state_atom, this.__meta, cljs.core.assoc.call(null, this.__extmap, b, c), null)
+};
+savant.store.memory.MemoryEventStore.prototype.cljs$core$IPrintWithWriter$_pr_writer$arity$3 = function(a, b, c) {
+  return cljs.core.pr_sequential_writer.call(null, b, function(a) {
+    return cljs.core.pr_sequential_writer.call(null, b, cljs.core.pr_writer, "", " ", "", c, a)
+  }, [cljs.core.str("#"), cljs.core.str("MemoryEventStore"), cljs.core.str("{")].join(""), ", ", "}", c, cljs.core.concat.call(null, cljs.core.PersistentVector.fromArray([cljs.core.vector.call(null, "\ufdd0'state-atom", this.state_atom)], !0), this.__extmap))
+};
+savant.store.memory.MemoryEventStore.prototype.savant$core$IEventStore$ = !0;
+savant.store.memory.MemoryEventStore.prototype.savant$core$IEventStore$_same_store_QMARK_$arity$2 = function(a, b) {
+  return cljs.core._EQ_.call(null, a, b)
+};
+savant.store.memory.MemoryEventStore.prototype.savant$core$IEventStore$create_stream$arity$3 = function(a, b, c) {
+  return savant.store.memory._create_stream.call(null, a, b, c)
+};
+savant.store.memory.MemoryEventStore.prototype.savant$core$IEventStore$get_stream$arity$3 = function(a, b, c) {
+  return savant.store.memory._get_stream.call(null, a, b, c, cljs.core.ObjMap.EMPTY)
+};
+savant.store.memory.MemoryEventStore.prototype.savant$core$IEventStore$get_stream$arity$4 = function(a, b, c, d) {
+  return savant.store.memory._get_stream.call(null, a, b, c, d)
+};
+savant.store.memory.MemoryEventStore.prototype.savant$core$IEventStore$exists_QMARK_$arity$3 = function(a, b, c) {
+  return null != savant.store.memory._get_stream.call(null, a, b, c, cljs.core.ObjMap.EMPTY)
+};
+savant.store.memory.MemoryEventStore.prototype.cljs$core$ICollection$_conj$arity$2 = function(a, b) {
+  return cljs.core.vector_QMARK_.call(null, b) ? a.cljs$core$IAssociative$_assoc$arity$3(a, cljs.core._nth.call(null, b, 0), cljs.core._nth.call(null, b, 1)) : cljs.core.reduce.call(null, cljs.core._conj, a, b)
+};
+savant.store.memory.MemoryEventStore.prototype.cljs$core$ISeqable$_seq$arity$1 = function() {
+  return cljs.core.seq.call(null, cljs.core.concat.call(null, cljs.core.PersistentVector.fromArray([cljs.core.vector.call(null, "\ufdd0'state-atom", this.state_atom)], !0), this.__extmap))
+};
+savant.store.memory.MemoryEventStore.prototype.cljs$core$ICounted$_count$arity$1 = function() {
+  return 1 + cljs.core.count.call(null, this.__extmap)
+};
+savant.store.memory.MemoryEventStore.prototype.cljs$core$IEquiv$_equiv$arity$2 = function(a, b) {
+  return cljs.core.truth_(function() {
+    if(cljs.core.truth_(b)) {
+      var c = a.constructor === b.constructor;
+      return c ? cljs.core.equiv_map.call(null, a, b) : c
+    }
+    return b
+  }()) ? !0 : !1
+};
+savant.store.memory.MemoryEventStore.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(a, b) {
+  return new savant.store.memory.MemoryEventStore(this.state_atom, b, this.__extmap, this.__hash)
+};
+savant.store.memory.MemoryEventStore.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
+  return this.__meta
+};
+savant.store.memory.MemoryEventStore.prototype.cljs$core$IMap$_dissoc$arity$2 = function(a, b) {
+  return cljs.core.contains_QMARK_.call(null, cljs.core.PersistentHashSet.fromArray(["\ufdd0'state-atom"]), b) ? cljs.core.dissoc.call(null, cljs.core.with_meta.call(null, cljs.core.into.call(null, cljs.core.ObjMap.EMPTY, a), this.__meta), b) : new savant.store.memory.MemoryEventStore(this.state_atom, this.__meta, cljs.core.not_empty.call(null, cljs.core.dissoc.call(null, this.__extmap, b)), null)
+};
+savant.store.memory.MemoryEventStore.cljs$lang$type = !0;
+savant.store.memory.MemoryEventStore.cljs$lang$ctorPrSeq = function() {
+  return cljs.core.list.call(null, "savant.store.memory/MemoryEventStore")
+};
+savant.store.memory.MemoryEventStore.cljs$lang$ctorPrWriter = function(a, b) {
+  return cljs.core._write.call(null, b, "savant.store.memory/MemoryEventStore")
+};
+savant.store.memory.__GT_MemoryEventStore = function(a) {
+  return new savant.store.memory.MemoryEventStore(a)
+};
+savant.store.memory.map__GT_MemoryEventStore = function(a) {
+  return new savant.store.memory.MemoryEventStore((new cljs.core.Keyword("\ufdd0'state-atom")).call(null, a), null, cljs.core.dissoc.call(null, a, "\ufdd0'state-atom"))
+};
+savant.store.memory.MemoryEventStore;
+savant.store.memory.MemoryEventStream = function(a, b, c, d) {
+  this.state_atom = a;
+  this.current_rev = b;
+  this.__meta = c;
+  this.__extmap = d;
+  this.cljs$lang$protocol_mask$partition1$ = 0;
+  this.cljs$lang$protocol_mask$partition0$ = 2229667594;
+  2 < arguments.length ? (this.__meta = c, this.__extmap = d) : this.__extmap = this.__meta = null
+};
+savant.store.memory.MemoryEventStream.prototype.cljs$core$IHash$_hash$arity$1 = function(a) {
+  var b = this.__hash;
+  return null != b ? b : this.__hash = a = cljs.core.hash_imap.call(null, a)
+};
+savant.store.memory.MemoryEventStream.prototype.cljs$core$ILookup$_lookup$arity$2 = function(a, b) {
+  return a.cljs$core$ILookup$_lookup$arity$3(a, b, null)
+};
+savant.store.memory.MemoryEventStream.prototype.cljs$core$ILookup$_lookup$arity$3 = function(a, b, c) {
+  return"\ufdd0'state-atom" === b ? this.state_atom : "\ufdd0'current-rev" === b ? this.current_rev : cljs.core._lookup.call(null, this.__extmap, b, c)
+};
+savant.store.memory.MemoryEventStream.prototype.cljs$core$IAssociative$_assoc$arity$3 = function(a, b, c) {
+  a = cljs.core.identical_QMARK_;
+  return a.call(null, "\ufdd0'state-atom", b) ? new savant.store.memory.MemoryEventStream(c, this.current_rev, this.__meta, this.__extmap, null) : a.call(null, "\ufdd0'current-rev", b) ? new savant.store.memory.MemoryEventStream(this.state_atom, c, this.__meta, this.__extmap, null) : new savant.store.memory.MemoryEventStream(this.state_atom, this.current_rev, this.__meta, cljs.core.assoc.call(null, this.__extmap, b, c), null)
+};
+savant.store.memory.MemoryEventStream.prototype.cljs$core$IPrintWithWriter$_pr_writer$arity$3 = function(a, b, c) {
+  return cljs.core.pr_sequential_writer.call(null, b, function(a) {
+    return cljs.core.pr_sequential_writer.call(null, b, cljs.core.pr_writer, "", " ", "", c, a)
+  }, [cljs.core.str("#"), cljs.core.str("MemoryEventStream"), cljs.core.str("{")].join(""), ", ", "}", c, cljs.core.concat.call(null, cljs.core.PersistentVector.fromArray([cljs.core.vector.call(null, "\ufdd0'state-atom", this.state_atom), cljs.core.vector.call(null, "\ufdd0'current-rev", this.current_rev)], !0), this.__extmap))
+};
+savant.store.memory.MemoryEventStream.prototype.cljs$core$ICollection$_conj$arity$2 = function(a, b) {
+  return cljs.core.vector_QMARK_.call(null, b) ? a.cljs$core$IAssociative$_assoc$arity$3(a, cljs.core._nth.call(null, b, 0), cljs.core._nth.call(null, b, 1)) : cljs.core.reduce.call(null, cljs.core._conj, a, b)
+};
+savant.store.memory.MemoryEventStream.prototype.savant$core$IEventStream$ = !0;
+savant.store.memory.MemoryEventStream.prototype.savant$core$IEventStream$get_rev_id$arity$1 = function() {
+  return this.current_rev
+};
+savant.store.memory.MemoryEventStream.prototype.savant$core$IEventStream$get_tip$arity$1 = function() {
+  return savant.store.memory._get_stream_tip.call(null, cljs.core.deref.call(null, this.state_atom))
+};
+savant.store.memory.MemoryEventStream.prototype.savant$core$IEventStream$tip_QMARK_$arity$1 = function(a) {
+  return cljs.core._EQ_.call(null, this.current_rev, a.savant$core$IEventStream$get_tip$arity$1(a))
+};
+savant.store.memory.MemoryEventStream.prototype.savant$core$IEventStream$get_commits_seq$arity$1 = function() {
+  var a = this, b = cljs.core.seq.call(null, cljs.core.deref.call(null, a.state_atom));
+  return null == a.current_rev ? b : cljs.core.take_while.call(null, function(b) {
+    return cljs.core.not_EQ_.call(null, a.current_rev, (new cljs.core.Keyword("\ufdd0'event-store/parent-rev-hash")).call(null, cljs.core.meta.call(null, b)))
+  }, b)
+};
+savant.store.memory.MemoryEventStream.prototype.savant$core$IEventStream$get_events_seq$arity$1 = function(a) {
+  return cljs.core.seq.call(null, a.savant$core$IEventStream$get_events_vec$arity$1(a))
+};
+savant.store.memory.MemoryEventStream.prototype.savant$core$IEventStream$get_events_vec$arity$1 = function(a) {
+  return cljs.core.into.call(null, cljs.core.PersistentVector.EMPTY, cljs.core.flatten.call(null, a.savant$core$IEventStream$get_commits_seq$arity$1(a)))
+};
+savant.store.memory.MemoryEventStream.prototype.savant$core$IEventStream$get_events_vec$arity$2 = function(a, b) {
+  return cljs.core.subvec.call(null, a.savant$core$IEventStream$get_events_vec$arity$1(a), b)
+};
+savant.store.memory.MemoryEventStream.prototype.savant$core$IEventStream$get_events_vec$arity$3 = function(a, b, c) {
+  return cljs.core.subvec.call(null, a.savant$core$IEventStream$get_events_vec$arity$1(a), b, c)
+};
+savant.store.memory.MemoryEventStream.prototype.savant$core$IEventStream$commit_events_BANG_$arity$2 = function(a, b) {
+  var c = this, d = function() {
+    var b = c.current_rev;
+    return cljs.core.truth_(b) ? b : savant.store.memory._build_first_commit_hash.call(null, a)
+  }(), e = savant.util.hex_digest.call(null, cljs.core.PersistentVector.fromArray([d, b], !0));
+  cljs.core.swap_BANG_.call(null, c.state_atom, function(a) {
+    var g = savant.store.memory._get_stream_tip.call(null, a);
+    return cljs.core._EQ_.call(null, c.current_rev, g) ? cljs.core.conj.call(null, a, savant.util.with_meta_merge.call(null, b, cljs.core.ObjMap.fromObject(["\ufdd0'event-store/parent-rev-hash", "\ufdd0'event-store/rev-hash"], {"\ufdd0'event-store/parent-rev-hash":d, "\ufdd0'event-store/rev-hash":e}))) : savant.util.throw_PLUS_.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0'type", "\ufdd0'event-store/conflict-detected"], !0), cljs.core.format.call(null, "conflict - current: %s and tip: %s", 
+    c.current_rev, g))
+  });
+  return savant.store.memory._bind_stream_to_rev.call(null, a, e)
+};
+savant.store.memory.MemoryEventStream.prototype.cljs$core$ISeqable$_seq$arity$1 = function() {
+  return cljs.core.seq.call(null, cljs.core.concat.call(null, cljs.core.PersistentVector.fromArray([cljs.core.vector.call(null, "\ufdd0'state-atom", this.state_atom), cljs.core.vector.call(null, "\ufdd0'current-rev", this.current_rev)], !0), this.__extmap))
+};
+savant.store.memory.MemoryEventStream.prototype.cljs$core$ICounted$_count$arity$1 = function() {
+  return 2 + cljs.core.count.call(null, this.__extmap)
+};
+savant.store.memory.MemoryEventStream.prototype.cljs$core$IEquiv$_equiv$arity$2 = function(a, b) {
+  return cljs.core.truth_(function() {
+    if(cljs.core.truth_(b)) {
+      var c = a.constructor === b.constructor;
+      return c ? cljs.core.equiv_map.call(null, a, b) : c
+    }
+    return b
+  }()) ? !0 : !1
+};
+savant.store.memory.MemoryEventStream.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(a, b) {
+  return new savant.store.memory.MemoryEventStream(this.state_atom, this.current_rev, b, this.__extmap, this.__hash)
+};
+savant.store.memory.MemoryEventStream.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
+  return this.__meta
+};
+savant.store.memory.MemoryEventStream.prototype.cljs$core$IMap$_dissoc$arity$2 = function(a, b) {
+  return cljs.core.contains_QMARK_.call(null, cljs.core.PersistentHashSet.fromArray(["\ufdd0'state-atom", "\ufdd0'current-rev"]), b) ? cljs.core.dissoc.call(null, cljs.core.with_meta.call(null, cljs.core.into.call(null, cljs.core.ObjMap.EMPTY, a), this.__meta), b) : new savant.store.memory.MemoryEventStream(this.state_atom, this.current_rev, this.__meta, cljs.core.not_empty.call(null, cljs.core.dissoc.call(null, this.__extmap, b)), null)
+};
+savant.store.memory.MemoryEventStream.cljs$lang$type = !0;
+savant.store.memory.MemoryEventStream.cljs$lang$ctorPrSeq = function() {
+  return cljs.core.list.call(null, "savant.store.memory/MemoryEventStream")
+};
+savant.store.memory.MemoryEventStream.cljs$lang$ctorPrWriter = function(a, b) {
+  return cljs.core._write.call(null, b, "savant.store.memory/MemoryEventStream")
+};
+savant.store.memory.__GT_MemoryEventStream = function(a, b) {
+  return new savant.store.memory.MemoryEventStream(a, b)
+};
+savant.store.memory.map__GT_MemoryEventStream = function(a) {
+  return new savant.store.memory.MemoryEventStream((new cljs.core.Keyword("\ufdd0'state-atom")).call(null, a), (new cljs.core.Keyword("\ufdd0'current-rev")).call(null, a), null, cljs.core.dissoc.call(null, a, "\ufdd0'state-atom", "\ufdd0'current-rev"))
+};
+savant.store.memory.MemoryEventStream;
+savant.store.memory._get_stream_tip = function(a) {
+  return(new cljs.core.Keyword("\ufdd0'event-store/rev-hash")).call(null, cljs.core.meta.call(null, cljs.core.last.call(null, a)))
+};
+savant.store.memory._build_first_commit_hash = function() {
+  return null
+};
+savant.store.memory._create_stream = function(a, b, c) {
+  if(!cljs.core.truth_(savant.util.named_QMARK_.call(null, b))) {
+    throw Error([cljs.core.str("Assert failed: "), cljs.core.str(cljs.core.pr_str.call(null, cljs.core.with_meta(cljs.core.list("\ufdd1'named?", "\ufdd1'bucket-name"), cljs.core.hash_map("\ufdd0'line", 17))))].join(""));
+  }
+  if(!cljs.core.truth_(savant.util.named_QMARK_.call(null, c))) {
+    throw Error([cljs.core.str("Assert failed: "), cljs.core.str(cljs.core.pr_str.call(null, cljs.core.with_meta(cljs.core.list("\ufdd1'named?", "\ufdd1'id"), cljs.core.hash_map("\ufdd0'line", 17))))].join(""));
+  }
+  cljs.core.truth_(savant.core.exists_QMARK_.call(null, a, b, c)) && savant.util.throw_PLUS_.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'type"], {"\ufdd0'type":"\ufdd0'event-store/stream-exists"}), "stream was already created");
+  var d = savant.store.memory.map__GT_MemoryEventStream.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'state-atom", "\ufdd0'current-rev"], {"\ufdd0'state-atom":cljs.core.atom.call(null, cljs.core.PersistentVector.EMPTY), "\ufdd0'current-rev":null}));
+  cljs.core.swap_BANG_.call(null, (new cljs.core.Keyword("\ufdd0'state-atom")).call(null, a), cljs.core.assoc_in, cljs.core.PersistentVector.fromArray([b, c], !0), d);
+  return d
+};
+savant.store.memory._bind_stream_to_rev = function(a, b) {
+  var c;
+  c = cljs.core.truth_(b) ? b : savant.core.get_tip.call(null, a);
+  return cljs.core._EQ_.call(null, savant.core.get_rev_id.call(null, a), c) ? a : cljs.core.assoc.call(null, a, "\ufdd0'current-rev", c)
+};
+savant.store.memory._get_stream = function(a, b, c, d) {
+  d = cljs.core.seq_QMARK_.call(null, d) ? cljs.core.apply.call(null, cljs.core.hash_map, d) : d;
+  d = cljs.core._lookup.call(null, d, "\ufdd0'rev", null);
+  if(!cljs.core.truth_(savant.util.named_QMARK_.call(null, b))) {
+    throw Error([cljs.core.str("Assert failed: "), cljs.core.str(cljs.core.pr_str.call(null, cljs.core.with_meta(cljs.core.list("\ufdd1'named?", "\ufdd1'bucket-name"), cljs.core.hash_map("\ufdd0'line", 19))))].join(""));
+  }
+  if(!cljs.core.truth_(savant.util.named_QMARK_.call(null, c))) {
+    throw Error([cljs.core.str("Assert failed: "), cljs.core.str(cljs.core.pr_str.call(null, cljs.core.with_meta(cljs.core.list("\ufdd1'named?", "\ufdd1'id"), cljs.core.hash_map("\ufdd0'line", 19))))].join(""));
+  }
+  a = cljs.core.get_in.call(null, cljs.core.deref.call(null, a.state_atom), cljs.core.PersistentVector.fromArray([b, c], !0));
+  return null != a ? savant.store.memory._bind_stream_to_rev.call(null, a, d) : null
+};
+savant.store.memory._validate_options_BANG_ = function(a) {
+  var a = cljs.core.seq_QMARK_.call(null, a) ? cljs.core.apply.call(null, cljs.core.hash_map, a) : a, b = cljs.core._lookup.call(null, a, "\ufdd0'init-map", cljs.core.ObjMap.EMPTY);
+  return null == cljs.core._lookup.call(null, a, "\ufdd0'name", null) ? savant.util.throw_PLUS_.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'type"], {"\ufdd0'type":"\ufdd0'event-store/invalid-options"}), "`:name` option is required") : null == b ? savant.util.throw_PLUS_.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'type"], {"\ufdd0'type":"\ufdd0'event-store/invalid-options"}), "`:init-map` must be a map") : null
+};
+savant.store.memory.get_event_store = function(a) {
+  var b = cljs.core.seq_QMARK_.call(null, a) ? cljs.core.apply.call(null, cljs.core.hash_map, a) : a, c = cljs.core._lookup.call(null, b, "\ufdd0'init-map", cljs.core.ObjMap.EMPTY), b = cljs.core._lookup.call(null, b, "\ufdd0'name", null);
+  savant.store.memory._validate_options_BANG_.call(null, a);
+  a = cljs.core._lookup.call(null, cljs.core.deref.call(null, savant.store.memory.memory_stores), b, null);
+  if(cljs.core.truth_(a)) {
+    return a
+  }
+  c = savant.store.memory.map__GT_MemoryEventStore.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'state-atom"], {"\ufdd0'state-atom":cljs.core.atom.call(null, c)}));
+  cljs.core.swap_BANG_.call(null, savant.store.memory.memory_stores, cljs.core.assoc, b, c);
+  return c
+};
+savant.test.store = {};
+savant.test.store.memory_test = {};
+cljs.core.not_EQ_.call(null, "undefined", typeof exports) && (buster = require("buster"));
+buster.spec.describe("memory-event-store-tests", function() {
+  buster.spec.describe("testing memory event store:", function() {
+    var a = savant.store.memory, b = cljs.core.ObjMap.fromObject(["\ufdd0'name"], {"\ufdd0'name":"foo"}), c = cljs.core.ObjMap.fromObject(["\ufdd0'invalid"], {"\ufdd0'invalid":"option"});
+    savant.test.store_spec.get_event_store_constructor_tests.call(null, a, b, c);
+    savant.test.store_spec.event_store_protocol_tests.call(null, a, b);
+    savant.test.store_spec.event_stream_protocol_tests.call(null, a, b);
+    return null
+  });
+  return null
+});
 savant.test.util_test = {};
 cljs.core.not_EQ_.call(null, "undefined", typeof exports) && (buster = require("buster"));
-var test_map__3724__auto__ = cljs.core.assoc.call(null, cljs.core.ObjMap.EMPTY, "digest of number 1 has always the same value", function() {
-  return buster_cljs.core.is.call(null, cljs.core._EQ_.call(null, "356a192b7913b04c54574d18c28d46e6395428ab", savant.util.hex_digest.call(null, 1)), "hex-digest should return always same value for number 1")
+buster.spec.describe("test-hex-digest", function() {
+  buster.spec.it("digest of number 1 has always the same value", function() {
+    buster_cljs.core.is.call(null, cljs.core._EQ_.call(null, "356a192b7913b04c54574d18c28d46e6395428ab", savant.util.hex_digest.call(null, 1)), "hex-digest should return always same value for number 1");
+    return null
+  });
+  return null
 });
-buster.testCase("test-hex-digest", buster_cljs.core.cljs__GT_js.call(null, test_map__3724__auto__));
