@@ -1,6 +1,6 @@
 ;; This file was generated with dalap-cljsbuild from
 ;;
-;; test/clj/savant/test/store_spec.clj @ Thu Nov 08 21:50:05 UTC 2012
+;; test/clj/savant/test/store_spec.clj @ Thu Nov 08 22:49:23 UTC 2012
 ;;
 (ns savant.test.store-spec (:require [buster-cljs.core :refer [is]] [clojure.set :as set] [savant.core :refer [IEventStore exists? create-stream get-stream -same-store? IEventStream get-commits-seq get-events-seq get-events-vec commit-events!]]) (:require-macros [buster-cljs.macros :refer [deftest describe it]]))
 (defn- get-event-store-fn [ns] (atom (.-get-event-store ns)))
