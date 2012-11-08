@@ -113,7 +113,7 @@
   ([store bucket-name id {:keys [rev] :as opts}]
     {:pre [(named? bucket-name)
            (named? id)]}
-    (let [unbounded-stream (get-in @(.state-atom store)
+    (let [unbounded-stream (get-in @(.-state-atom store)
                                    [bucket-name id])]
       (cond
         (not (nil? unbounded-stream))
@@ -125,11 +125,11 @@
   (cond
     (nil? name)
     (throw+ {:type :event-store/invalid-options}
-            ":name option is required")
+            "`:name` option is required")
 
     (nil? init-map)
     (throw+ {:type :event-store/invalid-options}
-            ":init-map must be a map")))
+            "`:init-map` must be a map")))
 
 (defn get-event-store
   [opts]
