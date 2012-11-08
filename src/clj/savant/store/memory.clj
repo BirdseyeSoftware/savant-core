@@ -1,10 +1,9 @@
 (ns savant.store.memory
-  (:require [slingshot.slingshot :refer (throw+)]
-            [savant.util
-             :refer (hex-digest with-meta-merge named?)]
+  (:require [savant.util
+             :refer [throw+ hex-digest with-meta-merge named?]]
             [savant.core
-             :refer (IEventStore IEventStream get-rev-id get-tip
-                     create-stream exists? get-events-vec get-commits-seq)]))
+             :refer [IEventStore IEventStream get-rev-id get-tip
+                     create-stream exists? get-events-vec get-commits-seq]]))
 
 
 ;;;;;;;;;;;;;;;;;;;;
@@ -31,13 +30,13 @@
     (-create-stream this bucket-name id))
 
   (get-stream [this bucket-name id]
-    (-get-stream this bucket-name id false))
+    (-get-stream this bucket-name id {}))
 
   (get-stream [this bucket-name id opts]
     (-get-stream this bucket-name id opts))
-  
+
   (exists? [this bucket-name id]
-    (not (nil? (-get-stream this bucket-name id false)))))
+    (not (nil? (-get-stream this bucket-name id {})))))
 
 (defrecord MemoryEventStream [state-atom current-rev]
   IEventStream
@@ -72,10 +71,9 @@
               (update-stream-state [stream-state]
                 (let [tip (-get-stream-tip stream-state)]
                   (if (not (= current-rev tip))
-                    (throw+ [:type :event-store/conflict-detected
-                             :msg
-                             (format "conflict - current: %s and tip: %s"
-                                          current-rev tip)])
+                    (throw+ [:type :event-store/conflict-detected]
+                            (format "conflict - current: %s and tip: %s"
+                                    current-rev tip))
                     (conj stream-state (with-meta-merge
                                          events
                                          {:event-store/parent-rev-hash
@@ -98,8 +96,8 @@
      {:pre [(named? bucket-name)
             (named? id)]}
      (when (exists? store bucket-name id)
-       (throw+ {:type :event-store/stream-exists
-                :message "stream was already created"}))
+       (throw+ {:type :event-store/stream-exists}
+               "stream was already created"))
      (let [stream (map->MemoryEventStream {:state-atom (atom [])
                                            :current-rev nil})]
        (swap! (:state-atom store) assoc-in [bucket-name id] stream)
@@ -115,7 +113,7 @@
   ([store bucket-name id {:keys [rev] :as opts}]
     {:pre [(named? bucket-name)
            (named? id)]}
-    (let [unbounded-stream (get-in @(.state-atom store)
+    (let [unbounded-stream (get-in @(.-state-atom store)
                                    [bucket-name id])]
       (cond
         (not (nil? unbounded-stream))
@@ -126,12 +124,12 @@
                             :or {init-map {}}}]
   (cond
     (nil? name)
-    (throw+ {:type :event-store/invalid-options
-             :message ":name option is required"})
+    (throw+ {:type :event-store/invalid-options}
+            "`:name` option is required")
 
     (nil? init-map)
-    (throw+ {:type :event-store/invalid-options
-             :message ":init-map must be a map"})))
+    (throw+ {:type :event-store/invalid-options}
+            "`:init-map` must be a map")))
 
 (defn get-event-store
   [opts]
