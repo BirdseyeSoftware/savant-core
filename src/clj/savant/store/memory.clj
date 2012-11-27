@@ -131,6 +131,11 @@
     (throw+ {:type :event-store/invalid-options}
             "`:init-map` must be a map")))
 
+(defn -reset-store [name]
+  (swap! memory-stores
+         update-in [name] (constantly (map->MemoryEventStore
+                                       {:state-atom (atom {})}))))
+
 (defn get-event-store
   [opts]
   ;; ^ NOTE: we are not doing destructuring here to have a simple signature

@@ -13,9 +13,7 @@
   (get-events-vec
     [this]
     [this from-event-id]
-    [this from-event-id to-event-id])
-  ; the commit can have clj meta attached to the events seq
-  )
+    [this from-event-id to-event-id]))
 
 (defprotocol IEventStore
   (-same-store? [this other-store])

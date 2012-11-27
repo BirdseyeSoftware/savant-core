@@ -20,6 +20,13 @@
               IEventStream get-commits-seq
               get-events-seq get-events-vec commit-events!]]))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defprotocol IEventStreamReload
+  (-reset-stream [this]))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defn- get-event-store-fn [ns]
   ^{:cljs
     ;; ns-publics returns vars, we
@@ -34,52 +41,54 @@
 (def default-test-bucket-name "event-store-tests")
 
 (defn get-event-store-constructor-tests [ns opts invalid-opts]
-  ^:clj
-  (it "event store constructor has a get-event-store fn with arity eq to 1"
-    (let [get-event-store (get-event-store-fn ns)
-          arglist (:arglists (meta get-event-store))]
-      (is (= arglist '[[opts]])
-          "arity of get-event-store should be 1")))
+  (describe "get-event-store constructor"
+    (let [get-event-store (get-event-store-fn ns)]
+      ^:clj
+      (it "event store constructor has a get-event-store fn with arity eq to 1"
+        (let [arglist (:arglists (meta get-event-store))]
+          (is (= arglist '[[opts]])
+              "arity of get-event-store should be 1")))
 
-  (it "event store constructor idempotent when called with same options"
-    (let [get-event-store (get-event-store-fn ns)
-          get-event-store @get-event-store
-          store1 (get-event-store opts)
-          store2 (get-event-store opts)]
-      (is (-same-store? store1 store2)
-          "get-event-store should be idempotent"))))
+      (it "event store constructor idempotent when called with same options"
+        (let [get-event-store (get-event-store-fn ns)
+              store1 (@get-event-store opts)
+              store2 (@get-event-store opts)]
+          (is (-same-store? store1 store2)
+              "get-event-store should be idempotent"))))))
 
 (defn event-store-protocol-tests [ns opts]
   (let [get-event-store (get-event-store-fn ns)
         store (@get-event-store opts)
         test-bucket (or (:test-bucket opts) default-test-bucket-name)]
 
-    (it "opts must contain a string :test-bucket to run tests"
+    (describe "event-store-protocol opts checker"
+      (it "opts map requires string in :test-bucket key to run tests"
         (is (string? test-bucket)
-            "The test opts must contain a string :test-bucket"))
+            "The `opts` map must contain a string in key :test-bucket")))
 
-    (it "create-stream requires bucket-name/id as str, keyword or symbol"
-      ^:clj (is (thrown? AssertionError (create-stream store 123 "hello")))
-      ^:clj (is (thrown? AssertionError (create-stream store "one" 123)))
-      (is (satisfies? IEventStream (create-stream store test-bucket "bar"))
-          "create-stream doesn't create a IEventStream object"))
+    (describe "create-stream function"
+      (it "requires bucket-name/id as str, keyword or symbol"
+        ^:clj (is (thrown? AssertionError (create-stream store 123 "hello")))
+        ^:clj (is (thrown? AssertionError (create-stream store "one" 123)))
+        (is (satisfies? IEventStream (create-stream store test-bucket "bar"))
+            "create-stream doesn't create a IEventStream object"))
 
-    (it "create-stream throws a stone when called twice with same args"
-      (^{:cljs 'try} try+
-        (create-stream store test-bucket "world")
-        (create-stream store test-bucket "world")
-        (is false)
-        ^{:cljs
-          '(catch js/Error e
-             (if (= (.-type e) :event-store/stream-exists)
-               (is true
-                   "create-stream twice should raise an `stream-exists` error")
-               (throw e)))}
-        (catch [:type :event-store/stream-exists] {}
-          (is true))))
+      (it "throws an exception when called twice with same args"
+        (^{:cljs 'try} try+
+         (create-stream store test-bucket "world")
+         (create-stream store test-bucket "world")
+         (is false)
+         ^{:cljs
+           '(catch js/Error e
+              (if (= (.-type e) :event-store/stream-exists)
+                (is true
+                    "create-stream twice should raise an `stream-exists` error")
+                (throw e)))}
+         (catch [:type :event-store/stream-exists] {}
+           (is true)))))
 
     (it "get-stream returns nil when stream doesn't exist"
-      (is (nil? (get-stream store test-bucket "non-existing"))))))
+        (is (nil? (get-stream store test-bucket "non-existing"))))))
 
 (defn event-stream-protocol-tests [ns opts]
   (let [get-event-store (get-event-store-fn ns)
@@ -94,17 +103,20 @@
       (let [new-stream (create-stream store test-bucket "new-stream-test")]
 
         (it "get-commits-seq returns nil on a new event-stream"
-          (is (nil? (get-commits-seq new-stream))
-              "get-commits-req should return nil on a new event-stream"))
+            (is (nil? (get-commits-seq new-stream))
+                "get-commits-req should return nil on a new event-stream"))
 
         (it "get-events-vec returns empty on a new event-stream"
-          (is (empty? (get-events-vec new-stream))
+            (is (empty? (get-events-vec new-stream))
               "get-events-vec should return an empty vector on a new event-stream")
-          (is (empty? (get-events-vec new-stream 0))
+            (is (empty? (get-events-vec new-stream 0))
               "get-events-vec should return an empty vector on a new event-stream")
-          (is (empty? (get-events-vec new-stream 0 0))
+            (is (empty (get-events-vec new-stream 0 0))
               "get-events-vec should return an empty vector on a new event-stream"))
 
+        ;; supported by clojure only for now, patch already submitted for
+        ;; clojurescript.
+        ^:clj
         (it "get-events-vec -> IndexOutOfBoundsExc. if invalid subrange"
           ^{:cljs
             '(try
@@ -116,7 +128,7 @@
                        (get-events-vec new-stream 0 5))))
 
         (it "get-events-seq returns nil on a new event-stream"
-          (is (nil? (get-events-seq new-stream))
+            (is (nil? (get-events-seq new-stream))
               "get-events-seq should return nil on a new event-stream"))
 
         (it "commit-events! creates an initial rev-hash"
@@ -127,9 +139,10 @@
                                         (get-commits-seq
                                          stream-after-commit)))]
             (is (not (nil? (:event-store/rev-hash last-commit-meta)))
-                "create-events! should create an initial rev-hash")
+                "commit-events! should create an initial rev-hash")
             (is (nil? (:event-store/parent-rev-hash last-commit-meta))
-                "create-events! should have nil parent-rev-hash on first events")))
+                "commit-events! should have nil parent-rev-hash on first events")
+            (-reset-stream empty-stream)))
 
         (it "commit-events! stores new events to the empty stream"
           (let [stream1 (commit-events! new-stream  [1 2 3])
@@ -146,4 +159,7 @@
             (is (submap? {:index 1}
                          (-> (get-commits-seq stream3)
                              second meta))
-                "invalid event-seq")))))))
+                "invalid event-seq")
+            (-reset-stream new-stream)
+            (-reset-stream stream1)
+            (-reset-stream stream2)))))))
