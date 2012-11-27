@@ -498,6 +498,15 @@ goog.base = function(me, opt_methodName, var_args) {
 goog.scope = function(fn) {
   fn.call(goog.global)
 };
+goog.provide("goog.debug.Error");
+goog.debug.Error = function(opt_msg) {
+  this.stack = (new Error).stack || "";
+  if(opt_msg) {
+    this.message = String(opt_msg)
+  }
+};
+goog.inherits(goog.debug.Error, Error);
+goog.debug.Error.prototype.name = "CustomError";
 goog.provide("goog.string");
 goog.provide("goog.string.Unicode");
 goog.string.Unicode = {NBSP:"\u00a0"};
@@ -925,15 +934,6 @@ goog.string.toSelectorCaseCache_ = {};
 goog.string.toSelectorCase = function(str) {
   return goog.string.toSelectorCaseCache_[str] || (goog.string.toSelectorCaseCache_[str] = String(str).replace(/([A-Z])/g, "-$1").toLowerCase())
 };
-goog.provide("goog.debug.Error");
-goog.debug.Error = function(opt_msg) {
-  this.stack = (new Error).stack || "";
-  if(opt_msg) {
-    this.message = String(opt_msg)
-  }
-};
-goog.inherits(goog.debug.Error, Error);
-goog.debug.Error.prototype.name = "CustomError";
 goog.provide("goog.asserts");
 goog.provide("goog.asserts.AssertionError");
 goog.require("goog.debug.Error");
@@ -21488,9 +21488,9 @@ goog.require("goog.crypt.Sha1");
 goog.require("goog.crypt");
 savant.util.hex_digest = function hex_digest(obj) {
   return goog.crypt.byteArrayToHex(function() {
-    var G__7644 = new goog.crypt.Sha1;
-    G__7644.update(cljs.core.pr_str.call(null, obj));
-    return G__7644
+    var G__2822 = new goog.crypt.Sha1;
+    G__2822.update(cljs.core.pr_str.call(null, obj));
+    return G__2822
   }().digest())
 };
 savant.util.throw_PLUS_ = function throw_PLUS_(obj, msg) {
@@ -21546,26 +21546,26 @@ savant.store.memory.MemoryEventStore.prototype.cljs$core$ILookup$_lookup$arity$2
   var self__ = this;
   return this__2331__auto__.cljs$core$ILookup$_lookup$arity$3(this__2331__auto__, k__2332__auto__, null)
 };
-savant.store.memory.MemoryEventStore.prototype.cljs$core$ILookup$_lookup$arity$3 = function(this__2333__auto__, k5744, else__2334__auto__) {
+savant.store.memory.MemoryEventStore.prototype.cljs$core$ILookup$_lookup$arity$3 = function(this__2333__auto__, k2824, else__2334__auto__) {
   var self__ = this;
-  if(k5744 === "\ufdd0'state-atom") {
+  if(k2824 === "\ufdd0'state-atom") {
     return self__.state_atom
   }else {
     if("\ufdd0'else") {
-      return cljs.core._lookup.call(null, self__.__extmap, k5744, else__2334__auto__)
+      return cljs.core._lookup.call(null, self__.__extmap, k2824, else__2334__auto__)
     }else {
       return null
     }
   }
 };
-savant.store.memory.MemoryEventStore.prototype.cljs$core$IAssociative$_assoc$arity$3 = function(this__2338__auto__, k__2339__auto__, G__5743) {
+savant.store.memory.MemoryEventStore.prototype.cljs$core$IAssociative$_assoc$arity$3 = function(this__2338__auto__, k__2339__auto__, G__2823) {
   var self__ = this;
-  var pred__5746 = cljs.core.identical_QMARK_;
-  var expr__5747 = k__2339__auto__;
-  if(pred__5746.call(null, "\ufdd0'state-atom", expr__5747)) {
-    return new savant.store.memory.MemoryEventStore(G__5743, self__.__meta, self__.__extmap, null)
+  var pred__2826 = cljs.core.identical_QMARK_;
+  var expr__2827 = k__2339__auto__;
+  if(pred__2826.call(null, "\ufdd0'state-atom", expr__2827)) {
+    return new savant.store.memory.MemoryEventStore(G__2823, self__.__meta, self__.__extmap, null)
   }else {
-    return new savant.store.memory.MemoryEventStore(self__.state_atom, self__.__meta, cljs.core.assoc.call(null, self__.__extmap, k__2339__auto__, G__5743), null)
+    return new savant.store.memory.MemoryEventStore(self__.state_atom, self__.__meta, cljs.core.assoc.call(null, self__.__extmap, k__2339__auto__, G__2823), null)
   }
 };
 savant.store.memory.MemoryEventStore.prototype.cljs$core$IPrintWithWriter$_pr_writer$arity$3 = function(this__2345__auto__, writer__2346__auto__, opts__2347__auto__) {
@@ -21632,9 +21632,9 @@ savant.store.memory.MemoryEventStore.prototype.cljs$core$IEquiv$_equiv$arity$2 =
     return false
   }
 };
-savant.store.memory.MemoryEventStore.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(this__2330__auto__, G__5743) {
+savant.store.memory.MemoryEventStore.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(this__2330__auto__, G__2823) {
   var self__ = this;
-  return new savant.store.memory.MemoryEventStore(self__.state_atom, G__5743, self__.__extmap, self__.__hash)
+  return new savant.store.memory.MemoryEventStore(self__.state_atom, G__2823, self__.__extmap, self__.__hash)
 };
 savant.store.memory.MemoryEventStore.prototype.cljs$core$IMeta$_meta$arity$1 = function(this__2329__auto__) {
   var self__ = this;
@@ -21658,8 +21658,8 @@ savant.store.memory.MemoryEventStore.cljs$lang$ctorPrWriter = function(this__236
 savant.store.memory.__GT_MemoryEventStore = function __GT_MemoryEventStore(state_atom) {
   return new savant.store.memory.MemoryEventStore(state_atom)
 };
-savant.store.memory.map__GT_MemoryEventStore = function map__GT_MemoryEventStore(G__5745) {
-  return new savant.store.memory.MemoryEventStore((new cljs.core.Keyword("\ufdd0'state-atom")).call(null, G__5745), null, cljs.core.dissoc.call(null, G__5745, "\ufdd0'state-atom"))
+savant.store.memory.map__GT_MemoryEventStore = function map__GT_MemoryEventStore(G__2825) {
+  return new savant.store.memory.MemoryEventStore((new cljs.core.Keyword("\ufdd0'state-atom")).call(null, G__2825), null, cljs.core.dissoc.call(null, G__2825, "\ufdd0'state-atom"))
 };
 savant.store.memory.MemoryEventStore;
 goog.provide("savant.store.memory.MemoryEventStream");
@@ -21693,33 +21693,33 @@ savant.store.memory.MemoryEventStream.prototype.cljs$core$ILookup$_lookup$arity$
   var self__ = this;
   return this__2331__auto__.cljs$core$ILookup$_lookup$arity$3(this__2331__auto__, k__2332__auto__, null)
 };
-savant.store.memory.MemoryEventStream.prototype.cljs$core$ILookup$_lookup$arity$3 = function(this__2333__auto__, k5750, else__2334__auto__) {
+savant.store.memory.MemoryEventStream.prototype.cljs$core$ILookup$_lookup$arity$3 = function(this__2333__auto__, k2830, else__2334__auto__) {
   var self__ = this;
-  if(k5750 === "\ufdd0'state-atom") {
+  if(k2830 === "\ufdd0'state-atom") {
     return self__.state_atom
   }else {
-    if(k5750 === "\ufdd0'current-rev") {
+    if(k2830 === "\ufdd0'current-rev") {
       return self__.current_rev
     }else {
       if("\ufdd0'else") {
-        return cljs.core._lookup.call(null, self__.__extmap, k5750, else__2334__auto__)
+        return cljs.core._lookup.call(null, self__.__extmap, k2830, else__2334__auto__)
       }else {
         return null
       }
     }
   }
 };
-savant.store.memory.MemoryEventStream.prototype.cljs$core$IAssociative$_assoc$arity$3 = function(this__2338__auto__, k__2339__auto__, G__5749) {
+savant.store.memory.MemoryEventStream.prototype.cljs$core$IAssociative$_assoc$arity$3 = function(this__2338__auto__, k__2339__auto__, G__2829) {
   var self__ = this;
-  var pred__5752 = cljs.core.identical_QMARK_;
-  var expr__5753 = k__2339__auto__;
-  if(pred__5752.call(null, "\ufdd0'state-atom", expr__5753)) {
-    return new savant.store.memory.MemoryEventStream(G__5749, self__.current_rev, self__.__meta, self__.__extmap, null)
+  var pred__2832 = cljs.core.identical_QMARK_;
+  var expr__2833 = k__2339__auto__;
+  if(pred__2832.call(null, "\ufdd0'state-atom", expr__2833)) {
+    return new savant.store.memory.MemoryEventStream(G__2829, self__.current_rev, self__.__meta, self__.__extmap, null)
   }else {
-    if(pred__5752.call(null, "\ufdd0'current-rev", expr__5753)) {
-      return new savant.store.memory.MemoryEventStream(self__.state_atom, G__5749, self__.__meta, self__.__extmap, null)
+    if(pred__2832.call(null, "\ufdd0'current-rev", expr__2833)) {
+      return new savant.store.memory.MemoryEventStream(self__.state_atom, G__2829, self__.__meta, self__.__extmap, null)
     }else {
-      return new savant.store.memory.MemoryEventStream(self__.state_atom, self__.current_rev, self__.__meta, cljs.core.assoc.call(null, self__.__extmap, k__2339__auto__, G__5749), null)
+      return new savant.store.memory.MemoryEventStream(self__.state_atom, self__.current_rev, self__.__meta, cljs.core.assoc.call(null, self__.__extmap, k__2339__auto__, G__2829), null)
     }
   }
 };
@@ -21757,8 +21757,8 @@ savant.store.memory.MemoryEventStream.prototype.savant$core$IEventStream$get_com
   if(self__.current_rev == null) {
     return commits
   }else {
-    return cljs.core.take_while.call(null, function(p1__5448_SHARP_) {
-      return cljs.core.not_EQ_.call(null, self__.current_rev, (new cljs.core.Keyword("\ufdd0'event-store/parent-rev-hash")).call(null, cljs.core.meta.call(null, p1__5448_SHARP_)))
+    return cljs.core.take_while.call(null, function(p1__3760_SHARP_) {
+      return cljs.core.not_EQ_.call(null, self__.current_rev, (new cljs.core.Keyword("\ufdd0'event-store/parent-rev-hash")).call(null, cljs.core.meta.call(null, p1__3760_SHARP_)))
     }, commits)
   }
 };
@@ -21828,9 +21828,9 @@ savant.store.memory.MemoryEventStream.prototype.cljs$core$IEquiv$_equiv$arity$2 
     return false
   }
 };
-savant.store.memory.MemoryEventStream.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(this__2330__auto__, G__5749) {
+savant.store.memory.MemoryEventStream.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(this__2330__auto__, G__2829) {
   var self__ = this;
-  return new savant.store.memory.MemoryEventStream(self__.state_atom, self__.current_rev, G__5749, self__.__extmap, self__.__hash)
+  return new savant.store.memory.MemoryEventStream(self__.state_atom, self__.current_rev, G__2829, self__.__extmap, self__.__hash)
 };
 savant.store.memory.MemoryEventStream.prototype.cljs$core$IMeta$_meta$arity$1 = function(this__2329__auto__) {
   var self__ = this;
@@ -21854,8 +21854,8 @@ savant.store.memory.MemoryEventStream.cljs$lang$ctorPrWriter = function(this__23
 savant.store.memory.__GT_MemoryEventStream = function __GT_MemoryEventStream(state_atom, current_rev) {
   return new savant.store.memory.MemoryEventStream(state_atom, current_rev)
 };
-savant.store.memory.map__GT_MemoryEventStream = function map__GT_MemoryEventStream(G__5751) {
-  return new savant.store.memory.MemoryEventStream((new cljs.core.Keyword("\ufdd0'state-atom")).call(null, G__5751), (new cljs.core.Keyword("\ufdd0'current-rev")).call(null, G__5751), null, cljs.core.dissoc.call(null, G__5751, "\ufdd0'state-atom", "\ufdd0'current-rev"))
+savant.store.memory.map__GT_MemoryEventStream = function map__GT_MemoryEventStream(G__2831) {
+  return new savant.store.memory.MemoryEventStream((new cljs.core.Keyword("\ufdd0'state-atom")).call(null, G__2831), (new cljs.core.Keyword("\ufdd0'current-rev")).call(null, G__2831), null, cljs.core.dissoc.call(null, G__2831, "\ufdd0'state-atom", "\ufdd0'current-rev"))
 };
 savant.store.memory.MemoryEventStream;
 savant.store.memory._get_stream_tip = function _get_stream_tip(stream_state) {
@@ -21896,11 +21896,11 @@ savant.store.memory._bind_stream_to_rev = function _bind_stream_to_rev(stream, r
     return cljs.core.assoc.call(null, stream, "\ufdd0'current-rev", rev__$1)
   }
 };
-savant.store.memory._get_stream = function _get_stream(store, bucket_name, id, p__5755) {
-  var map__5757 = p__5755;
-  var map__5757__$1 = cljs.core.seq_QMARK_.call(null, map__5757) ? cljs.core.apply.call(null, cljs.core.hash_map, map__5757) : map__5757;
-  var opts = map__5757__$1;
-  var rev = cljs.core._lookup.call(null, map__5757__$1, "\ufdd0'rev", null);
+savant.store.memory._get_stream = function _get_stream(store, bucket_name, id, p__2835) {
+  var map__2837 = p__2835;
+  var map__2837__$1 = cljs.core.seq_QMARK_.call(null, map__2837) ? cljs.core.apply.call(null, cljs.core.hash_map, map__2837) : map__2837;
+  var opts = map__2837__$1;
+  var rev = cljs.core._lookup.call(null, map__2837__$1, "\ufdd0'rev", null);
   if(cljs.core.truth_(savant.util.named_QMARK_.call(null, bucket_name))) {
   }else {
     throw new Error([cljs.core.str("Assert failed: "), cljs.core.str(cljs.core.pr_str.call(null, cljs.core.with_meta(cljs.core.list("\ufdd1'named?", "\ufdd1'bucket-name"), cljs.core.hash_map("\ufdd0'line", 19))))].join(""));
@@ -21920,11 +21920,11 @@ savant.store.memory._get_stream = function _get_stream(store, bucket_name, id, p
     }
   }
 };
-savant.store.memory._validate_options_BANG_ = function _validate_options_BANG_(p__5758) {
-  var map__5760 = p__5758;
-  var map__5760__$1 = cljs.core.seq_QMARK_.call(null, map__5760) ? cljs.core.apply.call(null, cljs.core.hash_map, map__5760) : map__5760;
-  var init_map = cljs.core._lookup.call(null, map__5760__$1, "\ufdd0'init-map", cljs.core.ObjMap.EMPTY);
-  var name = cljs.core._lookup.call(null, map__5760__$1, "\ufdd0'name", null);
+savant.store.memory._validate_options_BANG_ = function _validate_options_BANG_(p__2838) {
+  var map__2840 = p__2838;
+  var map__2840__$1 = cljs.core.seq_QMARK_.call(null, map__2840) ? cljs.core.apply.call(null, cljs.core.hash_map, map__2840) : map__2840;
+  var init_map = cljs.core._lookup.call(null, map__2840__$1, "\ufdd0'init-map", cljs.core.ObjMap.EMPTY);
+  var name = cljs.core._lookup.call(null, map__2840__$1, "\ufdd0'name", null);
   if(name == null) {
     return savant.util.throw_PLUS_.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'type"], {"\ufdd0'type":"\ufdd0'event-store/invalid-options"}), "`:name` option is required")
   }else {
@@ -21935,11 +21935,14 @@ savant.store.memory._validate_options_BANG_ = function _validate_options_BANG_(p
     }
   }
 };
+savant.store.memory._reset_store = function _reset_store(name) {
+  return cljs.core.swap_BANG_.call(null, savant.store.memory.memory_stores, cljs.core.update_in, cljs.core.PersistentVector.fromArray([name], true), cljs.core.constantly.call(null, savant.store.memory.map__GT_MemoryEventStore.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'state-atom"], {"\ufdd0'state-atom":cljs.core.atom.call(null, cljs.core.ObjMap.EMPTY)}))))
+};
 savant.store.memory.get_event_store = function get_event_store(opts) {
-  var map__5762 = opts;
-  var map__5762__$1 = cljs.core.seq_QMARK_.call(null, map__5762) ? cljs.core.apply.call(null, cljs.core.hash_map, map__5762) : map__5762;
-  var init_map = cljs.core._lookup.call(null, map__5762__$1, "\ufdd0'init-map", cljs.core.ObjMap.EMPTY);
-  var name = cljs.core._lookup.call(null, map__5762__$1, "\ufdd0'name", null);
+  var map__2842 = opts;
+  var map__2842__$1 = cljs.core.seq_QMARK_.call(null, map__2842) ? cljs.core.apply.call(null, cljs.core.hash_map, map__2842) : map__2842;
+  var init_map = cljs.core._lookup.call(null, map__2842__$1, "\ufdd0'init-map", cljs.core.ObjMap.EMPTY);
+  var name = cljs.core._lookup.call(null, map__2842__$1, "\ufdd0'name", null);
   savant.store.memory._validate_options_BANG_.call(null, opts);
   var or__3824__auto__ = cljs.core._lookup.call(null, cljs.core.deref.call(null, savant.store.memory.memory_stores), name, null);
   if(cljs.core.truth_(or__3824__auto__)) {

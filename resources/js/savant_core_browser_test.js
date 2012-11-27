@@ -388,6 +388,13 @@ goog.base = function(a, b, c) {
 goog.scope = function(a) {
   a.call(goog.global)
 };
+goog.debug = {};
+goog.debug.Error = function(a) {
+  this.stack = Error().stack || "";
+  a && (this.message = "" + a)
+};
+goog.inherits(goog.debug.Error, Error);
+goog.debug.Error.prototype.name = "CustomError";
 goog.string = {};
 goog.string.Unicode = {NBSP:"\u00a0"};
 goog.string.startsWith = function(a, b) {
@@ -708,13 +715,6 @@ goog.string.toSelectorCaseCache_ = {};
 goog.string.toSelectorCase = function(a) {
   return goog.string.toSelectorCaseCache_[a] || (goog.string.toSelectorCaseCache_[a] = ("" + a).replace(/([A-Z])/g, "-$1").toLowerCase())
 };
-goog.debug = {};
-goog.debug.Error = function(a) {
-  this.stack = Error().stack || "";
-  a && (this.message = "" + a)
-};
-goog.inherits(goog.debug.Error, Error);
-goog.debug.Error.prototype.name = "CustomError";
 goog.asserts = {};
 goog.asserts.ENABLE_ASSERTS = goog.DEBUG;
 goog.asserts.AssertionError = function(a, b) {
@@ -13139,152 +13139,6 @@ clojure.set.superset_QMARK_ = function(a, b) {
     return cljs.core.contains_QMARK_.call(null, a, b)
   }, b) : c
 };
-var buster_cljs = {core:{}};
-buster_cljs.core.cljs__GT_js = function cljs__GT_js(b) {
-  if(cljs.core.string_QMARK_.call(null, b)) {
-    return b
-  }
-  if(cljs.core.keyword_QMARK_.call(null, b)) {
-    return cljs.core.name.call(null, b)
-  }
-  if(cljs.core.map_QMARK_.call(null, b)) {
-    for(var c = {}, b = cljs.core.seq.call(null, b);;) {
-      if(b) {
-        var d = cljs.core.first.call(null, b), e = cljs.core.nth.call(null, d, 0, null), d = cljs.core.nth.call(null, d, 1, null);
-        c[cljs__GT_js.call(null, e)] = cljs__GT_js.call(null, d);
-        b = cljs.core.next.call(null, b)
-      }else {
-        break
-      }
-    }
-    return c
-  }
-  return cljs.core.coll_QMARK_.call(null, b) ? cljs.core.apply.call(null, cljs.core.array, cljs.core.map.call(null, cljs__GT_js, b)) : b
-};
-buster_cljs.core.is = function() {
-  var a = function(a, b) {
-    return buster.assert(a, b)
-  }, b = function(b, d) {
-    var e = null;
-    goog.isDef(d) && (e = cljs.core.array_seq(Array.prototype.slice.call(arguments, 1), 0));
-    return a.call(this, b, e)
-  };
-  b.cljs$lang$maxFixedArity = 1;
-  b.cljs$lang$applyTo = function(b) {
-    var d = cljs.core.first(b), b = cljs.core.rest(b);
-    return a(d, b)
-  };
-  b.cljs$lang$arity$variadic = a;
-  return b
-}();
-savant.test = {};
-savant.test.store_spec = {};
-savant.test.store_spec.get_event_store_fn = function(a) {
-  return cljs.core.atom.call(null, a.get_event_store)
-};
-savant.test.store_spec.submap_QMARK_ = function(a, b) {
-  return clojure.set.subset_QMARK_.call(null, cljs.core.set.call(null, cljs.core.seq.call(null, a)), cljs.core.set.call(null, cljs.core.seq.call(null, b)))
-};
-savant.test.store_spec.default_test_bucket_name = "event-store-tests";
-savant.test.store_spec.get_event_store_constructor_tests = function(a, b) {
-  return buster.spec.it("event store constructor idempotent when called with same options", function() {
-    var c = savant.test.store_spec.get_event_store_fn.call(null, a), d = cljs.core.deref.call(null, c), c = d.call(null, b), d = d.call(null, b);
-    buster_cljs.core.is.call(null, savant.core._same_store_QMARK_.call(null, c, d), "get-event-store should be idempotent");
-    return null
-  })
-};
-savant.test.store_spec.event_store_protocol_tests = function(a, b) {
-  var c = savant.test.store_spec.get_event_store_fn.call(null, a), d = cljs.core.deref.call(null, c).call(null, b), e = function() {
-    var a = (new cljs.core.Keyword("\ufdd0'test-bucket")).call(null, b);
-    return cljs.core.truth_(a) ? a : savant.test.store_spec.default_test_bucket_name
-  }();
-  buster.spec.it("opts must contain a string :test-bucket to run tests", function() {
-    buster_cljs.core.is.call(null, cljs.core.string_QMARK_.call(null, e), "The test opts must contain a string :test-bucket");
-    return null
-  });
-  buster.spec.it("create-stream requires bucket-name/id as str, keyword or symbol", function() {
-    buster_cljs.core.is.call(null, function() {
-      var a = savant.core.create_stream.call(null, d, e, "bar");
-      return a ? cljs.core.truth_(cljs.core.truth_(null) ? null : a.savant$core$IEventStream$) ? !0 : a.cljs$lang$protocol_mask$partition$ ? !1 : cljs.core.type_satisfies_.call(null, savant.core.IEventStream, a) : cljs.core.type_satisfies_.call(null, savant.core.IEventStream, a)
-    }(), "create-stream doesn't create a IEventStream object");
-    return null
-  });
-  buster.spec.it("create-stream throws a stone when called twice with same args", function() {
-    try {
-      savant.core.create_stream.call(null, d, e, "world"), savant.core.create_stream.call(null, d, e, "world"), buster_cljs.core.is.call(null, !1)
-    }catch(a) {
-      if(cljs.core.instance_QMARK_.call(null, Error, a)) {
-        if(cljs.core._EQ_.call(null, a.type, "\ufdd0'event-store/stream-exists")) {
-          buster_cljs.core.is.call(null, !0, "create-stream twice should raise an `stream-exists` error")
-        }else {
-          throw a;
-        }
-      }else {
-        throw a;
-      }
-    }
-    return null
-  });
-  return buster.spec.it("get-stream returns nil when stream doesn't exist", function() {
-    buster_cljs.core.is.call(null, null == savant.core.get_stream.call(null, d, e, "non-existing"));
-    return null
-  })
-};
-savant.test.store_spec.event_stream_protocol_tests = function(a, b) {
-  var c = savant.test.store_spec.get_event_store_fn.call(null, a), d = cljs.core.deref.call(null, c).call(null, b), e = function() {
-    var a = (new cljs.core.Keyword("\ufdd0'test-bucket")).call(null, b);
-    return cljs.core.truth_(a) ? a : savant.test.store_spec.default_test_bucket_name
-  }();
-  buster.spec.it("opts must contain a string :test-bucket to run tests", function() {
-    buster_cljs.core.is.call(null, cljs.core.string_QMARK_.call(null, e), "The test opts must contain a string :test-bucket");
-    return null
-  });
-  return buster.spec.describe("on a new event-stream", function() {
-    var a = savant.core.create_stream.call(null, d, e, "new-stream-test");
-    buster.spec.it("get-commits-seq returns nil on a new event-stream", function() {
-      buster_cljs.core.is.call(null, null == savant.core.get_commits_seq.call(null, a), "get-commits-req should return nil on a new event-stream");
-      return null
-    });
-    buster.spec.it("get-events-vec returns empty on a new event-stream", function() {
-      buster_cljs.core.is.call(null, cljs.core.empty_QMARK_.call(null, savant.core.get_events_vec.call(null, a)), "get-events-vec should return an empty vector on a new event-stream");
-      buster_cljs.core.is.call(null, cljs.core.empty_QMARK_.call(null, savant.core.get_events_vec.call(null, a, 0)), "get-events-vec should return an empty vector on a new event-stream");
-      buster_cljs.core.is.call(null, cljs.core.empty_QMARK_.call(null, savant.core.get_events_vec.call(null, a, 0, 0)), "get-events-vec should return an empty vector on a new event-stream");
-      return null
-    });
-    buster.spec.it("get-events-vec -> IndexOutOfBoundsExc. if invalid subrange", function() {
-      try {
-        savant.core.get_events_vec.call(null, a, 0, 5), buster_cljs.core.is.call(null, !1, "Index out of bound error should be thrown")
-      }catch(b) {
-        if(cljs.core.instance_QMARK_.call(null, Error, b)) {
-          buster_cljs.core.is.call(null, !0)
-        }else {
-          throw b;
-        }
-      }
-      return null
-    });
-    buster.spec.it("get-events-seq returns nil on a new event-stream", function() {
-      buster_cljs.core.is.call(null, null == savant.core.get_events_seq.call(null, a), "get-events-seq should return nil on a new event-stream");
-      return null
-    });
-    buster.spec.it("commit-events! creates an initial rev-hash", function() {
-      var a = savant.core.create_stream.call(null, d, e, "init-rev-hash-test"), a = savant.core.commit_events_BANG_.call(null, a, cljs.core.PersistentVector.fromArray([1, 2, 3], !0)), a = cljs.core.meta.call(null, cljs.core.last.call(null, savant.core.get_commits_seq.call(null, a)));
-      buster_cljs.core.is.call(null, null != (new cljs.core.Keyword("\ufdd0'event-store/rev-hash")).call(null, a), "create-events! should create an initial rev-hash");
-      buster_cljs.core.is.call(null, null == (new cljs.core.Keyword("\ufdd0'event-store/parent-rev-hash")).call(null, a), "create-events! should have nil parent-rev-hash on first events");
-      return null
-    });
-    buster.spec.it("commit-events! stores new events to the empty stream", function() {
-      var b = savant.core.commit_events_BANG_.call(null, a, cljs.core.PersistentVector.fromArray([1, 2, 3], !0)), c = savant.core.commit_events_BANG_.call(null, b, cljs.core.with_meta.call(null, cljs.core.PersistentVector.fromArray([4, 5, 6], !0), cljs.core.ObjMap.fromObject(["\ufdd0'index"], {"\ufdd0'index":1}))), d = savant.core.commit_events_BANG_.call(null, c, cljs.core.PersistentVector.fromArray([7, 8, 9], !0));
-      buster_cljs.core.is.call(null, cljs.core._EQ_.call(null, cljs.core.seq.call(null, cljs.core.PersistentVector.fromArray([1, 2, 3], !0)), savant.core.get_events_seq.call(null, b)), "invalid event-seq");
-      buster_cljs.core.is.call(null, cljs.core._EQ_.call(null, cljs.core.PersistentVector.fromArray([1, 2, 3], !0), savant.core.get_events_vec.call(null, b)), "invalid event-seq");
-      buster_cljs.core.is.call(null, cljs.core._EQ_.call(null, cljs.core.seq.call(null, cljs.core.PersistentVector.fromArray([1, 2, 3, 4, 5, 6], !0)), savant.core.get_events_seq.call(null, c)), "invalid event-seq");
-      buster_cljs.core.is.call(null, cljs.core._EQ_.call(null, cljs.core.seq.call(null, cljs.core.PersistentVector.fromArray([1, 2, 3, 4, 5, 6, 7, 8, 9], !0)), savant.core.get_events_seq.call(null, d)), "invalid event-seq");
-      buster_cljs.core.is.call(null, savant.test.store_spec.submap_QMARK_.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'index"], {"\ufdd0'index":1}), cljs.core.meta.call(null, cljs.core.second.call(null, savant.core.get_commits_seq.call(null, d)))), "invalid event-seq");
-      return null
-    });
-    return null
-  })
-};
 goog.crypt = {};
 goog.crypt.stringToByteArray = function(a) {
   for(var b = [], c = 0, d = 0;d < a.length;d++) {
@@ -13417,9 +13271,6 @@ savant.util.with_meta_merge = function(a, b) {
 savant.util.named_QMARK_ = function(a) {
   var b = cljs.core.string_QMARK_.call(null, a);
   return b ? b : cljs.core.instance_QMARK_.call(null, cljs.core.Named, a)
-};
-savant.util.ns_publics = function() {
-  return null
 };
 savant.store = {};
 savant.store.memory = {};
@@ -13655,6 +13506,9 @@ savant.store.memory._validate_options_BANG_ = function(a) {
   var a = cljs.core.seq_QMARK_.call(null, a) ? cljs.core.apply.call(null, cljs.core.hash_map, a) : a, b = cljs.core._lookup.call(null, a, "\ufdd0'init-map", cljs.core.ObjMap.EMPTY);
   return null == cljs.core._lookup.call(null, a, "\ufdd0'name", null) ? savant.util.throw_PLUS_.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'type"], {"\ufdd0'type":"\ufdd0'event-store/invalid-options"}), "`:name` option is required") : null == b ? savant.util.throw_PLUS_.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'type"], {"\ufdd0'type":"\ufdd0'event-store/invalid-options"}), "`:init-map` must be a map") : null
 };
+savant.store.memory._reset_store = function(a) {
+  return cljs.core.swap_BANG_.call(null, savant.store.memory.memory_stores, cljs.core.update_in, cljs.core.PersistentVector.fromArray([a], !0), cljs.core.constantly.call(null, savant.store.memory.map__GT_MemoryEventStore.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'state-atom"], {"\ufdd0'state-atom":cljs.core.atom.call(null, cljs.core.ObjMap.EMPTY)}))))
+};
 savant.store.memory.get_event_store = function(a) {
   var b = cljs.core.seq_QMARK_.call(null, a) ? cljs.core.apply.call(null, cljs.core.hash_map, a) : a, c = cljs.core._lookup.call(null, b, "\ufdd0'init-map", cljs.core.ObjMap.EMPTY), b = cljs.core._lookup.call(null, b, "\ufdd0'name", null);
   savant.store.memory._validate_options_BANG_.call(null, a);
@@ -13666,9 +13520,191 @@ savant.store.memory.get_event_store = function(a) {
   cljs.core.swap_BANG_.call(null, savant.store.memory.memory_stores, cljs.core.assoc, b, c);
   return c
 };
+var buster_cljs = {core:{}};
+buster_cljs.core.cljs__GT_js = function cljs__GT_js(b) {
+  if(cljs.core.string_QMARK_.call(null, b)) {
+    return b
+  }
+  if(cljs.core.keyword_QMARK_.call(null, b)) {
+    return cljs.core.name.call(null, b)
+  }
+  if(cljs.core.map_QMARK_.call(null, b)) {
+    for(var c = {}, b = cljs.core.seq.call(null, b);;) {
+      if(b) {
+        var d = cljs.core.first.call(null, b), e = cljs.core.nth.call(null, d, 0, null), d = cljs.core.nth.call(null, d, 1, null);
+        c[cljs__GT_js.call(null, e)] = cljs__GT_js.call(null, d);
+        b = cljs.core.next.call(null, b)
+      }else {
+        break
+      }
+    }
+    return c
+  }
+  return cljs.core.coll_QMARK_.call(null, b) ? cljs.core.apply.call(null, cljs.core.array, cljs.core.map.call(null, cljs__GT_js, b)) : b
+};
+buster_cljs.core.is = function() {
+  var a = function(a, b) {
+    var e = cljs.core.nth.call(null, b, 0, null);
+    return buster.assert(a, e)
+  }, b = function(b, d) {
+    var e = null;
+    goog.isDef(d) && (e = cljs.core.array_seq(Array.prototype.slice.call(arguments, 1), 0));
+    return a.call(this, b, e)
+  };
+  b.cljs$lang$maxFixedArity = 1;
+  b.cljs$lang$applyTo = function(b) {
+    var d = cljs.core.first(b), b = cljs.core.rest(b);
+    return a(d, b)
+  };
+  b.cljs$lang$arity$variadic = a;
+  return b
+}();
+buster_cljs.core.is_equal = function() {
+  var a = function(a, b, e) {
+    e = cljs.core.nth.call(null, e, 0, null);
+    return buster.assert.equals(a, b, e)
+  }, b = function(b, d, e) {
+    var f = null;
+    goog.isDef(e) && (f = cljs.core.array_seq(Array.prototype.slice.call(arguments, 2), 0));
+    return a.call(this, b, d, f)
+  };
+  b.cljs$lang$maxFixedArity = 2;
+  b.cljs$lang$applyTo = function(b) {
+    var d = cljs.core.first(b), e = cljs.core.first(cljs.core.next(b)), b = cljs.core.rest(cljs.core.next(b));
+    return a(d, e, b)
+  };
+  b.cljs$lang$arity$variadic = a;
+  return b
+}();
+savant.test = {};
+savant.test.store_spec = {};
+savant.test.store_spec.IEventStreamReload = {};
+savant.test.store_spec._reset_stream = function(a) {
+  if(a ? a.savant$test$store_spec$IEventStreamReload$_reset_stream$arity$1 : a) {
+    return a.savant$test$store_spec$IEventStreamReload$_reset_stream$arity$1(a)
+  }
+  var b;
+  b = savant.test.store_spec._reset_stream[goog.typeOf(null == a ? null : a)];
+  if(!b && (b = savant.test.store_spec._reset_stream._, !b)) {
+    throw cljs.core.missing_protocol.call(null, "IEventStreamReload.-reset-stream", a);
+  }
+  return b.call(null, a)
+};
+savant.test.store_spec.get_event_store_fn = function(a) {
+  return cljs.core.atom.call(null, a.get_event_store)
+};
+savant.test.store_spec.submap_QMARK_ = function(a, b) {
+  return clojure.set.subset_QMARK_.call(null, cljs.core.set.call(null, cljs.core.seq.call(null, a)), cljs.core.set.call(null, cljs.core.seq.call(null, b)))
+};
+savant.test.store_spec.default_test_bucket_name = "event-store-tests";
+savant.test.store_spec.get_event_store_constructor_tests = function(a, b) {
+  return buster.spec.describe("get-event-store constructor", function() {
+    savant.test.store_spec.get_event_store_fn.call(null, a);
+    buster.spec.it("event store constructor idempotent when called with same options", function() {
+      var c = savant.test.store_spec.get_event_store_fn.call(null, a), d = cljs.core.deref.call(null, c).call(null, b), c = cljs.core.deref.call(null, c).call(null, b);
+      buster_cljs.core.is.call(null, savant.core._same_store_QMARK_.call(null, d, c), "get-event-store should be idempotent");
+      return null
+    });
+    return null
+  })
+};
+savant.test.store_spec.event_store_protocol_tests = function(a, b) {
+  var c = savant.test.store_spec.get_event_store_fn.call(null, a), d = cljs.core.deref.call(null, c).call(null, b), e = function() {
+    var a = (new cljs.core.Keyword("\ufdd0'test-bucket")).call(null, b);
+    return cljs.core.truth_(a) ? a : savant.test.store_spec.default_test_bucket_name
+  }();
+  buster.spec.describe("event-store-protocol opts checker", function() {
+    buster.spec.it("opts map requires string in :test-bucket key to run tests", function() {
+      buster_cljs.core.is.call(null, cljs.core.string_QMARK_.call(null, e), "The `opts` map must contain a string in key :test-bucket");
+      return null
+    });
+    return null
+  });
+  buster.spec.describe("create-stream function", function() {
+    buster.spec.it("requires bucket-name/id as str, keyword or symbol", function() {
+      buster_cljs.core.is.call(null, function() {
+        var a = savant.core.create_stream.call(null, d, e, "bar");
+        return a ? cljs.core.truth_(cljs.core.truth_(null) ? null : a.savant$core$IEventStream$) ? !0 : a.cljs$lang$protocol_mask$partition$ ? !1 : cljs.core.type_satisfies_.call(null, savant.core.IEventStream, a) : cljs.core.type_satisfies_.call(null, savant.core.IEventStream, a)
+      }(), "create-stream doesn't create a IEventStream object");
+      return null
+    });
+    buster.spec.it("throws an exception when called twice with same args", function() {
+      try {
+        savant.core.create_stream.call(null, d, e, "world"), savant.core.create_stream.call(null, d, e, "world"), buster_cljs.core.is.call(null, !1)
+      }catch(a) {
+        if(cljs.core.instance_QMARK_.call(null, Error, a)) {
+          if(cljs.core._EQ_.call(null, a.type, "\ufdd0'event-store/stream-exists")) {
+            buster_cljs.core.is.call(null, !0, "create-stream twice should raise an `stream-exists` error")
+          }else {
+            throw a;
+          }
+        }else {
+          throw a;
+        }
+      }
+      return null
+    });
+    return null
+  });
+  return buster.spec.it("get-stream returns nil when stream doesn't exist", function() {
+    buster_cljs.core.is.call(null, null == savant.core.get_stream.call(null, d, e, "non-existing"));
+    return null
+  })
+};
+savant.test.store_spec.event_stream_protocol_tests = function(a, b) {
+  var c = savant.test.store_spec.get_event_store_fn.call(null, a), d = cljs.core.deref.call(null, c).call(null, b), e = function() {
+    var a = (new cljs.core.Keyword("\ufdd0'test-bucket")).call(null, b);
+    return cljs.core.truth_(a) ? a : savant.test.store_spec.default_test_bucket_name
+  }();
+  buster.spec.it("opts must contain a string :test-bucket to run tests", function() {
+    buster_cljs.core.is.call(null, cljs.core.string_QMARK_.call(null, e), "The test opts must contain a string :test-bucket");
+    return null
+  });
+  return buster.spec.describe("on a new event-stream", function() {
+    var a = savant.core.create_stream.call(null, d, e, "new-stream-test");
+    buster.spec.it("get-commits-seq returns nil on a new event-stream", function() {
+      buster_cljs.core.is.call(null, null == savant.core.get_commits_seq.call(null, a), "get-commits-req should return nil on a new event-stream");
+      return null
+    });
+    buster.spec.it("get-events-vec returns empty on a new event-stream", function() {
+      buster_cljs.core.is.call(null, cljs.core.empty_QMARK_.call(null, savant.core.get_events_vec.call(null, a)), "get-events-vec should return an empty vector on a new event-stream");
+      buster_cljs.core.is.call(null, cljs.core.empty_QMARK_.call(null, savant.core.get_events_vec.call(null, a, 0)), "get-events-vec should return an empty vector on a new event-stream");
+      buster_cljs.core.is.call(null, cljs.core.empty.call(null, savant.core.get_events_vec.call(null, a, 0, 0)), "get-events-vec should return an empty vector on a new event-stream");
+      return null
+    });
+    buster.spec.it("get-events-seq returns nil on a new event-stream", function() {
+      buster_cljs.core.is.call(null, null == savant.core.get_events_seq.call(null, a), "get-events-seq should return nil on a new event-stream");
+      return null
+    });
+    buster.spec.it("commit-events! creates an initial rev-hash", function() {
+      var a = savant.core.create_stream.call(null, d, e, "init-rev-hash-test"), b = savant.core.commit_events_BANG_.call(null, a, cljs.core.PersistentVector.fromArray([1, 2, 3], !0)), b = cljs.core.meta.call(null, cljs.core.last.call(null, savant.core.get_commits_seq.call(null, b)));
+      buster_cljs.core.is.call(null, null != (new cljs.core.Keyword("\ufdd0'event-store/rev-hash")).call(null, b), "commit-events! should create an initial rev-hash");
+      buster_cljs.core.is.call(null, null == (new cljs.core.Keyword("\ufdd0'event-store/parent-rev-hash")).call(null, b), "commit-events! should have nil parent-rev-hash on first events");
+      savant.test.store_spec._reset_stream.call(null, a);
+      return null
+    });
+    buster.spec.it("commit-events! stores new events to the empty stream", function() {
+      var b = savant.core.commit_events_BANG_.call(null, a, cljs.core.PersistentVector.fromArray([1, 2, 3], !0)), c = savant.core.commit_events_BANG_.call(null, b, cljs.core.with_meta.call(null, cljs.core.PersistentVector.fromArray([4, 5, 6], !0), cljs.core.ObjMap.fromObject(["\ufdd0'index"], {"\ufdd0'index":1}))), d = savant.core.commit_events_BANG_.call(null, c, cljs.core.PersistentVector.fromArray([7, 8, 9], !0));
+      buster_cljs.core.is.call(null, cljs.core._EQ_.call(null, cljs.core.seq.call(null, cljs.core.PersistentVector.fromArray([1, 2, 3], !0)), savant.core.get_events_seq.call(null, b)), "invalid event-seq");
+      buster_cljs.core.is.call(null, cljs.core._EQ_.call(null, cljs.core.PersistentVector.fromArray([1, 2, 3], !0), savant.core.get_events_vec.call(null, b)), "invalid event-seq");
+      buster_cljs.core.is.call(null, cljs.core._EQ_.call(null, cljs.core.seq.call(null, cljs.core.PersistentVector.fromArray([1, 2, 3, 4, 5, 6], !0)), savant.core.get_events_seq.call(null, c)), "invalid event-seq");
+      buster_cljs.core.is.call(null, cljs.core._EQ_.call(null, cljs.core.seq.call(null, cljs.core.PersistentVector.fromArray([1, 2, 3, 4, 5, 6, 7, 8, 9], !0)), savant.core.get_events_seq.call(null, d)), "invalid event-seq");
+      buster_cljs.core.is.call(null, savant.test.store_spec.submap_QMARK_.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'index"], {"\ufdd0'index":1}), cljs.core.meta.call(null, cljs.core.second.call(null, savant.core.get_commits_seq.call(null, d)))), "invalid event-seq");
+      savant.test.store_spec._reset_stream.call(null, a);
+      savant.test.store_spec._reset_stream.call(null, b);
+      savant.test.store_spec._reset_stream.call(null, c);
+      return null
+    });
+    return null
+  })
+};
 savant.test.store = {};
 savant.test.store.memory_test = {};
 cljs.core.not_EQ_.call(null, "undefined", typeof exports) && (buster = require("buster"));
+savant.store.memory.MemoryEventStream.prototype.savant$test$store_spec$IEventStreamReload$ = !0;
+savant.store.memory.MemoryEventStream.prototype.savant$test$store_spec$IEventStreamReload$_reset_stream$arity$1 = function(a) {
+  return cljs.core.reset_BANG_.call(null, a.state_atom, cljs.core.ObjMap.EMPTY)
+};
 buster.spec.describe("memory-event-store-tests", function() {
   buster.spec.describe("testing memory event store:", function() {
     var a = savant.store.memory, b = cljs.core.ObjMap.fromObject(["\ufdd0'name"], {"\ufdd0'name":"foo"}), c = cljs.core.ObjMap.fromObject(["\ufdd0'invalid"], {"\ufdd0'invalid":"option"});

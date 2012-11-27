@@ -1,6 +1,6 @@
 ;; This file was generated with dalap-cljsbuild from
 ;;
-;; src/clj/savant/store/memory.clj @ Tue Nov 27 21:13:59 UTC 2012
+;; src/clj/savant/store/memory.clj @ Tue Nov 27 23:30:14 UTC 2012
 ;;
 (ns savant.store.memory (:require [savant.util :refer [throw+ hex-digest with-meta-merge named?]] [savant.core :refer [IEventStore IEventStream get-rev-id get-tip create-stream exists? get-events-vec get-commits-seq]]))
 (def memory-stores (atom {}))
