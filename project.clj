@@ -1,17 +1,14 @@
-(defproject savant-core "0.1.0-SNAPSHOT"
+(defproject com.birdseye-sw/savant-core "0.1.0"
   :description "Event store interface for Clojure"
-  :url ""
-  :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
-
+  :url "http://birdseye-sw.com/oss/savant-core/"
+  :license {:name "MIT"
+            :url "http://opensource.org/licenses/MIT"}
   :dependencies [[org.clojure/clojure "1.4.0"]
                  [slingshot "0.10.3"]
-                 [buster-cljs "0.1.0-SNAPSHOT"]]
-
-  :profiles {:dev {:dependencies [[org.clojure/tools.namespace "0.2.1"]]}}
+                 [com.birdseye-sw/buster-cljs "0.1.0"]]
 
   :plugins [[lein-cljsbuild "0.2.9"]
-            [lein-dalap "0.1.0-SNAPSHOT"]]
+            [com.birdseye-sw/lein-dalap "0.1.0"]]
   :hooks [leiningen.dalap]
 
   :source-paths ["src/clj" "src/cljs"]
